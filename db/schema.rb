@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(version: 2019_07_25_113106) do
 
   create_table "checks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "pre_num"
-    t.integer "chk_num"
-    t.integer "dif_num"
+    t.integer "pre_score"
+    t.integer "chk_score"
+    t.integer "dif_score"
     t.integer "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
