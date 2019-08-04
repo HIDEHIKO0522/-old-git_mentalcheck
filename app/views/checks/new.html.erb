@@ -1,0 +1,56 @@
+<div class="contents row">
+   <div class="contents_question">
+     <div class="Q1"><%= @question1.text %></div>
+       
+       <%= form_for('/checks', method: :post) do %>
+         <%= f.label :"回答" %><br>
+         <%= f.select :chk_score1, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+         <% end %>
+       <% end %>
+ 
+     <div class="Q2"><%= @question2.text %></div>
+
+       <%= form_for('/checks', method: :post) do %>
+         <%= f.label :"回答" %><br>
+         <%= f.select :chk_score2, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+         <% end %>
+       <% end %>
+       
+     <div class="Q3"><%= @question3.text %></div>
+       
+       <%= form_for('/checks', method: :post) do %>
+         <%= f.label :"回答" %><br>
+         <%= f.select :chk_score3, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+         <% end %>
+       <% end %>
+       
+     <div class="Q4"><%= @question4.text %></div>
+       
+       <%= form_for('/checks', method: :post) do %>
+         <%= f.label :"回答" %><br>
+         <%= f.select :chk_score4, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+         <% end %>
+       <% end %>
+       
+     <div class="Q5"><%= @question5.text %></div>
+     
+       <%= form_for('/checks', method: :post) do %>
+         <%= f.label :"回答" %><br>
+         <%= f.select :chk_score5, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+         <% end %>
+       <% end %>
+   </div>
+   
+   <div class="content_answer">
+     <% if current_user.full_question? %>
+     <%= link_to '結果はこちらで', "/checks", method: :patch,class: 'btn btn-default' %>
+     <% else %>
+     "入力漏れがあります。問いに全部答えてください”
+
+     <% end %>
+  </div>
+</div>   
+ 
+ 
+ 
+ 

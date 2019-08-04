@@ -16,6 +16,11 @@ ActiveRecord::Schema.define(version: 2019_07_28_054017) do
     t.integer "user_id"
     t.integer "pre_score"
     t.integer "chk_score"
+    t.integer "chk_score1"
+    t.integer "chk_score2"
+    t.integer "chk_score3"
+    t.integer "chk_score4"
+    t.integer "chk_score5"
     t.integer "dif_score"
     t.integer "answer_id"
     t.datetime "created_at", null: false
