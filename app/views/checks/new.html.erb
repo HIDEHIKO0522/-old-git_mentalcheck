@@ -1,4 +1,11 @@
 <div class="contents row">
+   <div class="contents_prequestion">
+     <p><%= @nickname %>さんの今の気分を点数で入力してください。</p> 
+      <%= form_tag('/checks', method: :post) do %>
+      <input type="integer" name="pre_score" placeholder="今の気持ちを1〜25点の間で入力してください" autofocus="true">
+    <% end %>
+   </div>
+   
    <div class="contents_question">
      <div class="Q1"><%= @question1.text %></div>
        
@@ -45,8 +52,7 @@
      <% if current_user.full_question? %>
      <%= link_to '結果はこちらで', "/checks", method: :patch,class: 'btn btn-default' %>
      <% else %>
-     "入力漏れがあります。問いに全部答えてください”
-
+     <p>"入力漏れがあります。問いに全部答えてください”</p>
      <% end %>
   </div>
 </div>   
