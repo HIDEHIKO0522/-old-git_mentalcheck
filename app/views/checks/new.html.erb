@@ -50,7 +50,7 @@
    
    <div class="content_answer">
      <% if current_user.full_question? %>
-     <%= link_to '結果はこちらで', "/checks", method: :patch,class: 'btn btn-default' %>
+     <%= link_to '結果はこちらで', "/checks", method: :get,class: 'btn btn-default' %>
      <% else %>
      <p>"入力漏れがあります。問いに全部答えてください”</p>
      <% end %>

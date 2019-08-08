@@ -1,5 +1,6 @@
 class Check < ApplicationRecord
   
+  has_many :questions
   belongs_to :user
   
   
