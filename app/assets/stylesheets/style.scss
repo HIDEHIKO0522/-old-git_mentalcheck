@@ -1,0 +1,171 @@
+//application:
+body,html {
+  height: 100%;
+  background-color: #f3ffd8;//$lightGray;
+}
+//application:
+body {
+  padding-top: 40px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align:  left;
+}
+
+h1,h2,h3,h4,h5,h6,body {
+  line-height: 1.57;
+  letter-spacing: 0.15em;
+  font-size: 16px;
+  color: #000;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+  &:hover {
+    color: #57C3E9;
+  }
+}
+
+
+.btn {
+    Padding: 5px 15px ;
+    font-size: 12px;
+    border: 2px solid #57C3E9;
+    color: #000080;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+  &:hover {
+    border-color: lighten(#57C3E9, 15%);
+    color: #800080;
+  }
+}
+
+//font-family:フォントの種類を表す
+//sans-serif …… ゴシック系のフォント
+//serif …… 明朝系のフォント
+//cursive …… 筆記体・草書体のフォント
+//fantasy …… 装飾的なフォント
+
+h1{
+   line-height: 1.77;
+   font-size: 30px;
+   color: #1a1a1a;
+   font-family: fantasy;//書体の指定:装飾的なフォント
+   margin: 0;
+   padding: 0;
+}
+
+h3,{
+   line-height: 1.77;
+   font-size: 15px;
+   color: #1a1a1a;
+   font-family: fantasy;//書体の指定:装飾的なフォント
+   margin: 0;
+   padding: 0;  
+}
+
+h6, {
+   line-height: 1.77;
+   font-size: 6px;
+   color: #8a8a8a;
+   font-family: sans-serif;//書体の指定:ゴシック系のフォント
+   width: 450px;
+   margin: auto;
+   padding: 0; 
+}
+
+header.header {
+  border-bottom: 1px solid #292929;
+  background-color: #d7ffee;
+  position: fixed;
+  top: 0;
+  left:  0;
+  right: 0;
+  z-index: 5;// headerとcontentsが重なった時は、headerが前に表示されるようにする
+  
+  div.header__bar.row {
+    position: relative;
+    
+    h1.grid-6 {
+      font-size: 30px;
+      line-height: 41px;
+      color: #800080;
+      float: left;
+      a {
+        display: block;
+      }
+    }
+    div.grid-6 {
+      float: right;
+      text-align: right;
+    }
+  }
+}
+
+.form {
+  background: url(https://dl.dropboxusercontent.com/u/5840617/DeathtoStock_Wired3.jpg);
+  background-size: cover;
+  .contents {
+    position: absolute;
+    left:   0;
+    top:    30px;
+    bottom: 0;
+    right:  0;
+    margin: auto;
+  }
+  footer {
+    position: absolute;
+    bottom: 5px;
+    left:  0;
+    right: 0;
+  }
+}
+
+div.contents_row {
+  .success {
+    top:     70px;
+    bottom:   0px;
+    right:    0px;
+    left:     0px;
+    height: 400px;
+    width:  200px;
+    margin:  auto;
+  }
+}  
+//入力フォームの設定
+form {
+  input,textarea {
+    width: 200px;
+    padding: 200px 200px 200px,200px ;
+    border: 1px solid #D8D8D8;
+    border-radius: 5px;
+    margin: auto;
+    font-family: "游ゴシック", "YuGothic";
+  }
+  input[type="submit"] {
+    background-color: #57C3E9;
+    border-radius: 20px;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+    &:hover {
+      background-color: lighten(#57C3E9, 10%);
+    }
+  }
+}
+
+
+//application "Copyright メンタルチェック 2019."の設定"
+footer {
+  Padding: 5px 0 15px 10px;　　
+
+  p {
+     font-size: 10px;
+     text-align: center;
+     color:#D8D8D8;
+  }
+}
