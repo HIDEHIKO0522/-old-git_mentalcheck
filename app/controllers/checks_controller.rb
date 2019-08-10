@@ -7,11 +7,13 @@ class ChecksController < ApplicationController
   end  
 
   def new
-    @question1 = Question.find(question.pluck(:category == 1).shuffle[1])
-    @question2 = Question.find(question.pluck(:category == 2).shuffle[1])
-    @question3 = Question.find(question.pluck(:category == 3).shuffle[1])
-    @question4 = Question.find(question.pluck(:category == 4).shuffle[1])
-    @question5 = Question.find(question.pluck(:category == 5).shuffle[1])
+    # Model.find(Model.pluck(:id).shuffle[0..4])
+    
+    @question1 = Question.where( category:1).order("RAND()").limit(1).map{|v| [v.text]}
+    @question2 = Question.where( category:2).order("RAND()").limit(1).map{|v| [v.text]}
+    @question3 = Question.where( category:3).order("RAND()").limit(1).map{|v| [v.text]}
+    @question4 = Question.where( category:4).order("RAND()").limit(1).map{|v| [v.text]}
+    @question5 = Question.where( category:5).order("RAND()").limit(1).map{|v| [v.text]}
   end  
 
   def create

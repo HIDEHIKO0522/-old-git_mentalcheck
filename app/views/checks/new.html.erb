@@ -1,60 +1,84 @@
 <div class="contents row">
-   <div class="contents_prequestion">
-     <p><%= @nickname %>さんの今の気分を点数で入力してください。</p> 
+  <div class="contents_prequestion">
+     <p><%= current_user.nickname %>さんの今の気分を点数で入力してください。</p> 
       <%= form_tag('/checks', method: :post) do %>
       <input type="integer" name="pre_score" placeholder="今の気持ちを1〜25点の間で入力してください" autofocus="true">
-    <% end %>
-   </div>
-   
-   <div class="contents_question">
-     <div class="Q1"><%= @question1.text %></div>
-       
-       <%= form_for('/checks', method: :post) do %>
-         <%= f.label :"回答" %><br>
-         <%= f.select :chk_score1, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
-         <% end %>
-       <% end %>
- 
-     <div class="Q2"><%= @question2.text %></div>
-
-       <%= form_for('/checks', method: :post) do %>
-         <%= f.label :"回答" %><br>
-         <%= f.select :chk_score2, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
-         <% end %>
-       <% end %>
-       
-     <div class="Q3"><%= @question3.text %></div>
-       
-       <%= form_for('/checks', method: :post) do %>
-         <%= f.label :"回答" %><br>
-         <%= f.select :chk_score3, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
-         <% end %>
-       <% end %>
-       
-     <div class="Q4"><%= @question4.text %></div>
-       
-       <%= form_for('/checks', method: :post) do %>
-         <%= f.label :"回答" %><br>
-         <%= f.select :chk_score4, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
-         <% end %>
-       <% end %>
-       
-     <div class="Q5"><%= @question5.text %></div>
-     
-       <%= form_for('/checks', method: :post) do %>
-         <%= f.label :"回答" %><br>
-         <%= f.select :chk_score5, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
-         <% end %>
-       <% end %>
-   </div>
-   
-   <div class="content_answer">
-     <% if current_user.full_question? %>
-     <%= link_to '結果はこちらで', "/checks", method: :get,class: 'btn btn-default' %>
-     <% else %>
-     <p>"入力漏れがあります。問いに全部答えてください”</p>
-     <% end %>
+   <% end %>
   </div>
+   
+  <div class="contents_question">
+    <div class="Q1">
+       <p>Q1: <%= @question1 %></P>
+       <p>回答</p>
+       <%= form_for('/checks', method: :post) do %>
+         <select name="chk_score1">
+           <option value="5">よくある</option>
+           <option value="4">時々ある</option>
+           <option value="3">少しある</option>
+           <option value="2">あまりない</option>
+           <option value="1">ほとんどない</option>
+         </select>
+       <% end %>
+      </div>  
+      
+    <div class="Q2">
+       <p>Q2: <%= @question2 %></P>
+       <p>回答</p>
+         <%= form_for('/checks', method: :post) do %>
+         <select name="chk_score2">
+           <option value="5">よくある</option>
+           <option value="4">時々ある</option>
+           <option value="3">少しある</option>
+           <option value="2">あまりない</option>
+           <option value="1">ほとんどない</option>
+         </select>
+       <% end %>
+    </div>   
+ 
+   <div class="Q3">
+       <p>Q3: <%= @question3 %></P>
+       <p>回答</p>
+     <%= form_for('/checks', method: :post) do %>
+         <select name="chk_score3">
+           <option value="5">よくある</option>
+           <option value="4">時々ある</option>
+           <option value="3">少しある</option>
+           <option value="2">あまりない</option>
+           <option value="1">ほとんどない</option>
+         </select>
+     <% end %> 
+    </div>   
+    
+     <div class="Q4">
+       <p>Q4: <%= @question4 %></P>
+    <%= form_for('/checks', method: :post) do %>
+         <select name="chk_score4">
+           <option value="5">よくある</option>
+           <option value="4">時々ある</option>
+           <option value="3">少しある</option>
+           <option value="2">あまりない</option>
+           <option value="1">ほとんどない</option>
+         </select>
+      <% end %>
+    </div>   
+    
+     <div class="Q5">
+       <p>Q5: <%= @question5 %></P>
+       <p>回答</p>
+ <%= form_for('/checks', method: :post) do %>
+         <select name="chk_score5">
+           <option value="5">よくある</option>
+           <option value="4">時々ある</option>
+           <option value="3">少しある</option>
+           <option value="2">あまりない</option>
+           <option value="1">ほとんどない</option>
+         </select>
+       <% end %>
+    </div>   
+  </div>
+
+    <input type="submit" value="SENT">
+
 </div>   
  
  
