@@ -1,0 +1,11 @@
+<div class="contents_image ">
+
+  <p><%= @nickname %>さん、こんにちは<br>
+  今感じているストレスレベルと診断テストによるストレスレベルを比較して、<br>
+  心のケアに役立てましょう！</p> 
+
+      <% if user_signed_in? && current_user.id %>
+            <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>
+        <% end %>
+
+</div>    
