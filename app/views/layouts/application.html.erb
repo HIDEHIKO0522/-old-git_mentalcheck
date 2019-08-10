@@ -15,13 +15,9 @@
         <h1 class="grid-6"><a href="/">メンタルチェック</a></h1>
         <% if user_signed_in? %>
             <div class="user_nav grid-6">
-              <span><%= current_user.nickname %> 
-               <ul class="user__info">
-                  <li>
-                    <a class="link_bottom" href="/users/#{current_user.id}">マイページ</a>
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-default' %>
-                  </li>
-               </ul>
+              <span>
+                <a class="link_bottom" href="/users/#{current_user.id}">マイページ</a>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-default' %>
               </span>
             </div>/
         <% else %> 
