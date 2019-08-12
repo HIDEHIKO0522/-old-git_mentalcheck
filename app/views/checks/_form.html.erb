@@ -1,0 +1,28 @@
+<div class="contents_question">
+  
+    <p><%= current_user.nickname %>さんの今の気分を選んでください。</p> 
+        <%= form.label :"回答" %><br>
+         <%= form.select :pre_score, [["とても悪い", "5"], ["悪い", "4"], ["普通", "3"], ["良い", "2"], ["とても良い", "1"],] ,class:"form-control" %>
+
+     <p><%= current_user.nickname %>さん、下記5つの質問に答えてください。</p> 
+       <p>Q1: <%= @question1 %></P>
+         <%= form.label :"回答" %><br>
+         <%= form.select :chk_score1, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+
+       <p>Q2: <%= @question2 %></P>
+         <%= form.label :"回答" %><br>
+         <%= form.select :chk_score2, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+
+      <p>Q3: <%= @question3 %></P>
+         <%= form.label :"回答" %><br>
+         <%= form.select :chk_score3, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+
+       <p>Q4: <%= @question4 %></P>
+         <%= form.label :"回答" %><br>
+         <%= form.select :chk_score4, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+
+       <p>Q5: <%= @question5 %></P>
+         <%= form.label :"回答" %><br>
+         <%= form.select :chk_score5, [["よくある", "5"], ["時々ある", "4"], ["少しある", "3"], ["あまりない", "2"], ["ほとんどない", "1"],] ,class:"form-control" %>
+
+</div>
