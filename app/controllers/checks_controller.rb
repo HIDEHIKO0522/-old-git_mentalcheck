@@ -31,7 +31,8 @@ class ChecksController < ApplicationController
 
   def show
     @check = Check.find(params[:id])
-    
+    @check_sum = @check.chk_score1 + @check.chk_score2 + @check.chk_score3 + @check.chk_score4 + @check.chk_score5
+    @dif_chk = @check_sum - @check.pre_score
   end 
 
   private
@@ -39,6 +40,11 @@ class ChecksController < ApplicationController
     params.permit(:pre_score, :chk_score1, :chk_score2, :chk_score3, :chk_score4, :chk_score5)
   end  
   
+  
+  # def full_score?
+    
+    # pre_score? && chk_score1? && chk_score2? && chk_score3? && chk_score4? && chk_score5?
+  # end
   # def check_sum(check)
 
     # @pre_score = pre_score

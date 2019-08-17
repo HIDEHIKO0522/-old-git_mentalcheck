@@ -1,7 +1,8 @@
  <div class="contents row">
    <div class="contents_form">
 
-  <%= form_tag('/checks', method: :post) do %>
+    <%= form_tag('/checks', method: :post) do %>
+   
       <p><%= current_user.nickname %>さんの今の気分を選んでください。</p> 
       <p>回答: 25:とても悪い 　20:悪い　 15:普通　 10:少し良い　5:とても良い</p>
        <input type="integer" name="pre_score" placeholder="今の気持ち" autofocus="true">
@@ -43,7 +44,9 @@
 
 
 
-<%= form_for(@check) do |f| %>
+  <%= form_for(@check) do |f| %>
+
+   <!--%= render "shared/errors", obj: @check %>-->
     
       <p><%= current_user.nickname %>さんの今の気分を選んでください。</p> 
         <%= f.label :pre_score, "回答" %>

@@ -1,8 +1,8 @@
 <div class="contents row">
 
-  <p>あなたのメンタルチェック結果は"<%= @chk_score %>"でした<br>
+  <p>あなたのメンタルチェック結果は"<%= @check_sum %>"でした<br>
     <p class="text-small">
-      <span class="rating-star"><i class="star-actived rate-<%= @chk_score %>0"></i></span>
+      <span class="rating-star"><i class="star-actived rate-<%= @check_sum %>0"></i></span>
     </p>
   </p>
   <p>チェック前の気分は"<%= @check.pre_score %>"<br>
@@ -10,5 +10,7 @@
       <span class="rating-star"><i class="star-actived rate-<%= @check.pre_score %>0"></i></span>
     </p>
   </p>
+
+
 
 </div>

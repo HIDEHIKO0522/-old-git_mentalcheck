@@ -1,8 +1,14 @@
+<!--% unless @check.idblank? %>-->
+  <!--header class="header_top panel panel-default col-lg-12 no-profile">-->
+    <!--<h2>診断項目すべてを入力してください数値を入力してください</h2>-->
+  <!--%= link_to '診断入力に戻る', "/checks/new", method: :get,class: 'btn btn-default' %>-->
+  <!--</header>-->
+<!--% else %>-->
 <div class="contents row">
   <div class="success">
     <h3>
       チェックが完了しました。
     </h3>
     <%= link_to '結果はこちらで', "/checks/#{@check.id}", method: :get,class: 'btn btn-default' %>
-  </div>
+  <!--% end %>-->
 </div>
