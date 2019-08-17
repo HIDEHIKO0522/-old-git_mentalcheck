@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
     root 'checks#index'
     resources :checks
+    resources :users, only: [:show] 
 
 end
