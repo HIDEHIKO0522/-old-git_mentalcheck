@@ -1,16 +1,66 @@
 <div class="contents row">
 
-  <p>あなたのメンタルチェック結果は"<%= @check_sum %>"でした<br>
-    <p class="text-small">
-      <span class="rating-star"><i class="star-actived rate-<%= @check_sum %>0"></i></span>
-    </p>
+  <p>あなたのメンタルチェック結果：<%= @check_sum %>
+   
+    <div class="star-rating">
+      <div class="star-rating-front" style="width: 50%">★★★★★</div>
+         <!--<span class="star-rating"><i class="star-actived rate-%= review.rate %>0"></i></span>-->
+      <div class="star-rating-back">★★★★★</div>
+    </div>
   </p>
-  <p>チェック前の気分は"<%= @check.pre_score %>"<br>
-    <p class="text-small">
-      <span class="rating-star"><i class="star-actived rate-<%= @check.pre_score %>0"></i></span>
-    </p>
+    
+    <p>診断コメント
+     <% if @check_sum > 20 then %>
+      <p>ストレスがかかり過ぎです！すぐに休みをとってください</p>
+    <% elsif @check_sum > 15 && @check_sum <= 20 then %>
+      <p>かなり無理がきているようです。積極的に休みをとりましょう！</p>
+    <% elsif @check_sum > 10 && @check_sum <= 15 then %>
+      <p>少し無理がきているようです。適時休みをとり、ストレスを溜めないように心がけましょう</p>
+    <% elsif @check_sum > 5 && @check_sum <= 10 then %>
+      <p>今のところ大丈夫そうですが、心のバランスをとるよう心がけましょう</p>
+    <% else %>
+      <p>調子よさそうですね。このペースを維持しましょう！</p>
+    <% end %>
+    </P>
+
+
+    
+  <p>チェック前の気分:<%= @check.pre_score %>
+    <div class="star-rating">
+      <div class="star-rating-front" style="width: 50%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
   </p>
 
-
-
+  <div class="content_comment">
+    <p>ストレス感度は<%= @dif_chk.abs %>です</p>
+     <% if @dif_chk.abs> 20 then %>
+      <p>感度に大いに問題があります。心の疲れを感じ取れなくなったら危険です。すぐに休養しましょう！</p>
+    <% elsif @dif_chk.abs > 15 && @dif_chk.abs <= 20 then %>
+      <p>感度が鈍ってきているよです。疲れがたまってきてませんか？　自分を大事にしましょう！</p>
+    <% elsif @dif_chk.abs > 10 && @dif_chk.abs <= 15 then %>
+      <p>感度がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
+    <% elsif @dif_chk.abs > 5 && @dif_chk.abs <= 10 then %>
+      <p>今は問題ありませんが、無理は禁物です。こころのリフレッシュを常に心がけましょう！</p>
+    <% else %>
+      <p>適正です。今の気分に素直に行動しましょう！</p>
+    <% end %>
+    </P>
+    </div>
+   <div class="content_more">
+      <ul class="more_list">
+          <li>
+            <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br><br>
+          
+        <% if user_signed_in? && current_user.id == @check.user_id %>
+          
+            <%= link_to 'やり直す', "/checks/#{@check.id}/edit", method: :get,class: 'btn btn-default' %>
+            <%= link_to '削除', "/checks/#{@check.id}", method: :delete,class: 'btn btn-default' %>
+           <% end %>     
+          </li>
+      </ul>
+  </div> 
+  
+  
+  
 </div>

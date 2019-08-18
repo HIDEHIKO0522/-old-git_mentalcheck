@@ -26,6 +26,7 @@ class ChecksController < ApplicationController
                        chk_score4: check_params[:chk_score4],
                        chk_score5: check_params[:chk_score5],
                        user_id: current_user.id )
+  
     # @check_sum = Check.create(check_sum)                   
   end
 
@@ -35,6 +36,34 @@ class ChecksController < ApplicationController
     @dif_chk = @check_sum - @check.pre_score
   end 
 
+
+  def edit
+    
+    @question1 = Question.where( category:1).order("RAND()").limit(1).map{|v| v.text}
+    @question2 = Question.where( category:2).order("RAND()").limit(1).map{|v| v.text}
+    @question3 = Question.where( category:3).order("RAND()").limit(1).map{|v| v.text}
+    @question4 = Question.where( category:4).order("RAND()").limit(1).map{|v| v.text}
+    @question5 = Question.where( category:5).order("RAND()").limit(1).map{|v| v.text}
+    
+    @check = Check.find(params[:id])
+    
+  end
+
+  def update
+    @check = Check.find(params[:id])
+  
+  end
+ 
+  def destroy
+      check = Check.find(params[:id])
+    if check.user_id == current_user.id
+      check.destroy
+    end  
+  end    
+ 
+
+
+  
   private
   def check_params
     params.permit(:pre_score, :chk_score1, :chk_score2, :chk_score3, :chk_score4, :chk_score5)
@@ -45,19 +74,7 @@ class ChecksController < ApplicationController
     
     # pre_score? && chk_score1? && chk_score2? && chk_score3? && chk_score4? && chk_score5?
   # end
-  # def check_sum(check)
-
-    # @pre_score = pre_score
-    # @chk_score1 = chk_score1
-    # @chk_score2 = chk_score2
-    # @chk_score3 = chk_score3
-    # @chk_score4 = chk_score4
-    # @chk_score5 = chk_score5
-    
-    # @sum = @pre_score + @chk_score1 + @chk_score2 + @chk_score3 + @chk_score4 + @chk_score5
-  # @check_sum = @sum
-   
-  # end  
+ 
  
   def move_to_index
     redirect_to action: :index unless user_signed_in?
