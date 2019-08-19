@@ -1,6 +1,7 @@
 <div class="contents row">
+    <div class="contents_image">
 
-  <p>あなたのメンタルチェック結果：<%= @check_sum %>
+  <p>ストレスチェック結果：<%= @check.chk_score %>
    
     <div class="star-rating">
       <div class="star-rating-front" style="width: 50%">★★★★★</div>
@@ -10,13 +11,13 @@
   </p>
     
     <p>診断コメント
-     <% if @check_sum > 20 then %>
+     <% if @check.chk_score > 20 then %>
       <p>ストレスがかかり過ぎです！すぐに休みをとってください</p>
-    <% elsif @check_sum > 15 && @check_sum <= 20 then %>
+    <% elsif @check.chk_score > 15 && @check.chk_score <= 20 then %>
       <p>かなり無理がきているようです。積極的に休みをとりましょう！</p>
-    <% elsif @check_sum > 10 && @check_sum <= 15 then %>
+    <% elsif @check.chk_score > 10 && @check.chk_score <= 15 then %>
       <p>少し無理がきているようです。適時休みをとり、ストレスを溜めないように心がけましょう</p>
-    <% elsif @check_sum > 5 && @check_sum <= 10 then %>
+    <% elsif @check.chk_score > 5 && @check.chk_score <= 10 then %>
       <p>今のところ大丈夫そうですが、心のバランスをとるよう心がけましょう</p>
     <% else %>
       <p>調子よさそうですね。このペースを維持しましょう！</p>
@@ -25,7 +26,7 @@
 
 
     
-  <p>チェック前の気分:<%= @check.pre_score %>
+  <p>診断前のストレス認知度:<%= @check.pre_score %>
     <div class="star-rating">
       <div class="star-rating-front" style="width: 50%">★★★★★</div>
       <div class="star-rating-back">★★★★★</div>
@@ -33,17 +34,17 @@
   </p>
 
   <div class="content_comment">
-    <p>ストレス感度は<%= @dif_chk.abs %>です</p>
-     <% if @dif_chk.abs> 20 then %>
+    <p>ストレス感度は<%= @check.dif_score %>です</p>
+     <% if @check.dif_score > 20 then %>
       <p>感度に大いに問題があります。心の疲れを感じ取れなくなったら危険です。すぐに休養しましょう！</p>
-    <% elsif @dif_chk.abs > 15 && @dif_chk.abs <= 20 then %>
+    <% elsif @check.dif_score > 15 && @check.dif_score <= 20 then %>
       <p>感度が鈍ってきているよです。疲れがたまってきてませんか？　自分を大事にしましょう！</p>
-    <% elsif @dif_chk.abs > 10 && @dif_chk.abs <= 15 then %>
+    <% elsif @check.dif_score > 10 && @check.dif_score <= 15 then %>
       <p>感度がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
-    <% elsif @dif_chk.abs > 5 && @dif_chk.abs <= 10 then %>
+    <% elsif @check.dif_score > 5 && @check.dif_score <= 10 then %>
       <p>今は問題ありませんが、無理は禁物です。こころのリフレッシュを常に心がけましょう！</p>
     <% else %>
-      <p>適正です。今の気分に素直に行動しましょう！</p>
+      <p>適正です。今の気分に素直に行動し、疲れを感じたら休みをとりましょう！</p>
     <% end %>
     </P>
     </div>
@@ -55,12 +56,12 @@
         <% if user_signed_in? && current_user.id == @check.user_id %>
           
             <%= link_to 'やり直す', "/checks/#{@check.id}/edit", method: :get,class: 'btn btn-default' %>
-            <%= link_to '削除', "/checks/#{@check.id}", method: :delete,class: 'btn btn-default' %>
+            <%= link_to '削除', "/checks/#{@check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
            <% end %>     
           </li>
       </ul>
   </div> 
   
   
-  
+  </div> 
 </div>

@@ -1,48 +1,6 @@
  <div class="contents row">
    <div class="contents_form">
 
-    <%= form_tag('/checks', method: :post) do %>
-   
-      <p><%= current_user.nickname %>さんの今の気分を選んでください。</p> 
-      <p>回答: 25:とても悪い 　20:悪い　 15:普通　 10:少し良い　5:とても良い</p>
-       <input type="integer" name="pre_score" placeholder="今の気持ち" autofocus="true">
-  
-      
-     <p><%= current_user.nickname %>さん、下記5つの質問に答えてください。</p> 
-       <p>Q1: <%= @question1 %></P>
-        <p>回答: 5:よくある　 4:時々ある　 3:少しある　 2:あまりない　 1:ほとんどない</p>
-         <input type="integer" name="chk_score1" placeholder="1〜5の数字を記入" autofocus="true">
- 
-       <p>Q2: <%= @question2 %></P>
-       <p>回答: 5:よくある　 4:時々ある　 3:少しある　 2:あまりない　 1:ほとんどない</p>
-         <input type="integer" name="chk_score2" placeholder="1〜5の数字を記入" autofocus="true">
-        
-      <p>Q3: <%= @question3 %></P>
-         <p>回答: 5:よくある　 4:時々ある　 3:少しある　 2:あまりない　 1:ほとんどない</p>
-         <input type="integer" name="chk_score3" placeholder="1〜5の数字を記入" autofocus="true">
-        
-       <p>Q4: <%= @question4 %></P>
-          <p>回答: 5:よくある　 4:時々ある　 3:少しある　 2:あまりない　 1:ほとんどない</p>
-         <input type="integer" name="chk_score4" placeholder="1〜5の数字を記入" autofocus="true">
-
-       <p>Q5: <%= @question5 %></P>
-            <p>回答: 5:よくある　 4:時々ある　 3:少しある　 2:あまりない　 1:ほとんどない</p>
-         <input type="integer" name="chk_score5" placeholder="1〜5の数字を記入" autofocus="true">
-
-   <div>
-   <input type="submit" value="診断結果へ">
-   </div>
- <% end %>
- </div>
-</div>   
-
-
-
-
-
-
-
-
   <%= form_for(@check) do |f| %>
 
    <!--%= render "shared/errors", obj: @check %>-->

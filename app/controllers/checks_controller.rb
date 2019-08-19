@@ -1,9 +1,10 @@
 class ChecksController < ApplicationController
 
   before_action :move_to_index, except: :index
+  
 
   def index
-    
+    @checks = Check.includes(:user).page(params[:page]).per(3).order("created_at DESC")
   end  
 
   def new
@@ -13,9 +14,8 @@ class ChecksController < ApplicationController
     @question3 = Question.where( category:3).order("RAND()").limit(1).map{|v| v.text}
     @question4 = Question.where( category:4).order("RAND()").limit(1).map{|v| v.text}
     @question5 = Question.where( category:5).order("RAND()").limit(1).map{|v| v.text}
-    
-  @check = Check.new
   
+  @check = Check.new
   end  
 
   def create
@@ -25,20 +25,18 @@ class ChecksController < ApplicationController
                        chk_score3: check_params[:chk_score3],
                        chk_score4: check_params[:chk_score4],
                        chk_score5: check_params[:chk_score5],
+                       chk_score: check_params[:chk_score],
+                       dif_score: check_params[:dif_score],
                        user_id: current_user.id )
-  
-    # @check_sum = Check.create(check_sum)                   
+    @check.save
   end
 
   def show
     @check = Check.find(params[:id])
-    @check_sum = @check.chk_score1 + @check.chk_score2 + @check.chk_score3 + @check.chk_score4 + @check.chk_score5
-    @dif_chk = @check_sum - @check.pre_score
   end 
 
 
   def edit
-    
     @question1 = Question.where( category:1).order("RAND()").limit(1).map{|v| v.text}
     @question2 = Question.where( category:2).order("RAND()").limit(1).map{|v| v.text}
     @question3 = Question.where( category:3).order("RAND()").limit(1).map{|v| v.text}
@@ -46,12 +44,10 @@ class ChecksController < ApplicationController
     @question5 = Question.where( category:5).order("RAND()").limit(1).map{|v| v.text}
     
     @check = Check.find(params[:id])
-    
   end
 
   def update
     @check = Check.find(params[:id])
-  
   end
  
   def destroy
@@ -66,7 +62,8 @@ class ChecksController < ApplicationController
   
   private
   def check_params
-    params.permit(:pre_score, :chk_score1, :chk_score2, :chk_score3, :chk_score4, :chk_score5)
+    params.require(:check).permit(:pre_score,  :chk_score1, :chk_score2, :chk_score3, :chk_score4, :chk_score5,
+                  :chk_score, :dif_score)
   end  
   
   

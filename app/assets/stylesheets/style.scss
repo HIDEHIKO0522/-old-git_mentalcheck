@@ -85,7 +85,7 @@ header.header {
   top: 0;
   left:  0;
   right: 0;
-  z-index: 5;// headerとcontentsが重なった時は、headerが前に表示されるようにする
+  z-index: 0;// headerとcontentsが重なった時は、headerが前に表示されるようにする
   
   div.header__bar.row {
     position: relative;
@@ -126,6 +126,13 @@ header.header {
 }
 
 div.contents_row {
+      left:    0px;
+     top:     0px;
+     bottom:  10px;
+     right:   0px;
+     height: 1200px;
+     width:  700px;
+     margin: auto;  
   .success {
     top:     70px;
     bottom:   0px;
@@ -135,6 +142,18 @@ div.contents_row {
     width:  200px;
     margin:  auto;
   }
+  .contents_form {
+    top:     0px;
+    bottom:   0px;
+    right:    0px;
+    left:     0px;
+    height: 900px;
+    width:  450px;
+    margin:  auto;
+  }
+  
+  
+  
 }  
 //入力フォームの設定
 form {
@@ -158,7 +177,30 @@ form {
   }
 }
 
+//indexアクションでの設定
+div.contents_image {
+     left:    0px;
+     top:     0px;
+     bottom:  10px;
+     right:   0px;
+     height: 900px;
+     width:  450px;
+     margin: auto;
 
+      div.content_more {
+    .more_list {
+     top:      20px;
+     bottom:   0px;
+     right:    0px;
+     left:     0px;
+     height:  40px;
+     width:  200px;
+     margin:  auto;
+     text-align: left;
+
+    }  
+  }
+}
 .star-rating {
   position: relative;
   width: 5em;
