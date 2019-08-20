@@ -1,58 +1,71 @@
 <div class="contents_row">
     
-  <p>こんにちは<br>
-  今感じているストレスレベルと診断テスト後のストレスレベルを比較して、ストレス感度を確認し、
-  心のケアに役立てましょう！</p> 
+  <h2>こんにちは
+    <% if user_signed_in? && current_user.id %>
+    <%= current_user.nickname %>さん</h2><br>
+    <% end %>
+  <h2>今感じているストレスレベルと診断テスト後のストレスレベルを比較して、ストレス感度を確認し、
+  心のケアに役立てましょう！</h2> 
 
   <% if user_signed_in? && current_user.id %>
     <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>  
   <% end %> 
-<div class="contents_image">  
+  <table class="list">  
+   <thead>
+     <tr>
+       <th>更新日</th>
+       <th>ニック<br>ネーム</th>
+       <th>ストレスチェック<br>結果</th>
+       <th>診断前のストレス<br>認知度</th>
+       <th>ストレス感度</th>
+       <th>編集・削除</th>
+     </tr>
+   </thead>
+   <tbody>
    <% @checks.each do |check| %>
-
-     <h6>最終更新日:<%= check.updated_at %></h6>
-    <a href="/users/<%= check.user_id %>">
-        <span><%= check.user.nickname %>さん</span>
-      </a>
-    <p>ストレスチェック結果：<%= check.chk_score %>
-    <div class="star-rating">
-      <div class="star-rating-front" style="width: 50%">★★★★★</div>
-         <!--<span class="star-rating"><i class="star-actived rate-%= review.rate %>0"></i></span>-->
-      <div class="star-rating-back">★★★★★</div>
-    </div>
-  </p>
-      <p>診断前のストレス認知度:<%= check.pre_score %>
-        <div class="star-rating">
-          <div class="star-rating-front" style="width: 50%">★★★★★</div>
-          <div class="star-rating-back">★★★★★</div>
-        </div>
-    
-    <div class="content_comment">
-    <p>ストレス感度は<%= check.dif_score %>です</p>
-     <% if check.dif_score > 20 then %>
-      <p>感度に大いに問題があります。心の疲れを感じ取れなくなったら危険です。すぐに休養しましょう！</p>
-    <% elsif check.dif_score > 15 && check.dif_score <= 20 then %>
-      <p>感度が鈍ってきているよです。疲れがたまってきてませんか？　自分を大事にしましょう！</p>
-    <% elsif check.dif_score > 10 && check.dif_score <= 15 then %>
-      <p>感度がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
-    <% elsif check.dif_score > 5 && check.dif_score <= 10 then %>
-      <p>今は問題ありませんが、無理は禁物です。こころのリフレッシュを常に心がけましょう！</p>
-    <% else %>
-      <p>適正です。今の気分に素直に行動し、疲れを感じたら休みをとりましょう！</p>
-    <% end %>
-    </P>
-    </div>
-    <div class="content_more">
-      <ul class="more_list">
-        <% if user_signed_in? && current_user.id == check.user_id %>
-          <li>
+    <tr>
+       <td><%= check.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+       <td><a href="/users/<%= check.user_id %>">
+          <span><%= check.user.nickname %></span>
+        </a>
+       </td>
+       <td>
+         <!--%= check.chk_score %>-->
+          <div class="star-rating">
+            <div class="star-rating-front" style="width: 50%">★★★★★</div>
+               <!--<span class="star-rating"><i class="star-actived rate-%= review.rate %>0"></i></span>-->
+            <div class="star-rating-back">★★★★★</div>
+          </div>
+       </td>
+       <td>
+         <!--%= check.pre_score %>-->
+          <div class="star-rating">
+            <div class="star-rating-front" style="width: 50%">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+          </div>
+       </td>
+       <td>
+           <% if check.dif_score > 20 then %>
+            <p>感度に大いに問題があります。心の疲れを感じ取れなくなったら危険です。すぐに休養しましょう！</p>
+          <% elsif check.dif_score > 15 && check.dif_score <= 20 then %>
+            <p>感度が鈍ってきているよです。疲れがたまってきてませんか？　積極的に休みを取り、心の感度を取り戻しましょう！</p>
+          <% elsif check.dif_score > 10 && check.dif_score <= 15 then %>
+            <p>感度がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
+          <% elsif check.dif_score > 5 && check.dif_score <= 10 then %>
+            <p>今は問題ありませんが、無理は禁物です。こころのリフレッシュを常に心がけましょう！</p>
+          <% else %>
+            <p>適正です。今の気分に素直に行動し、特にストレス度が高い場合、休息第一で行動してください！</p>
+          <% end %>
+        </td>
+        <td>
+            <% if user_signed_in? && current_user.id == check.user_id %>
             <%= link_to '編集', "/checks/#{check.id}/edit", method: :get,class: 'btn btn-default' %>
             <%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
-          </li>
         <% end %>
-      </ul>  
-    </div>
-  <% end %> 
-  </div>
+        </td>
+    </tr>    
+   <% end %> 
+  </tbody>
+  </table>
   <%= paginate(@checks) %> 
 </div>    

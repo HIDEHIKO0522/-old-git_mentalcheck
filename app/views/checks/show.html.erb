@@ -38,28 +38,26 @@
      <% if @check.dif_score > 20 then %>
       <p>感度に大いに問題があります。心の疲れを感じ取れなくなったら危険です。すぐに休養しましょう！</p>
     <% elsif @check.dif_score > 15 && @check.dif_score <= 20 then %>
-      <p>感度が鈍ってきているよです。疲れがたまってきてませんか？　自分を大事にしましょう！</p>
+      <p>感度が鈍ってきているよです。疲れがたまってきてませんか？　積極的に休みを取り、心の感度を取り戻しましょう！</p>
     <% elsif @check.dif_score > 10 && @check.dif_score <= 15 then %>
       <p>感度がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
     <% elsif @check.dif_score > 5 && @check.dif_score <= 10 then %>
       <p>今は問題ありませんが、無理は禁物です。こころのリフレッシュを常に心がけましょう！</p>
     <% else %>
-      <p>適正です。今の気分に素直に行動し、疲れを感じたら休みをとりましょう！</p>
+      <p>適正です。今の気分に素直に行動し、特にストレス度が高い場合、休息第一で行動してください！</p>
     <% end %>
     </P>
     </div>
    <div class="content_more">
-      <ul class="more_list">
-          <li>
-            <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br><br>
+      <div class="more_list">
+            <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br>
           
         <% if user_signed_in? && current_user.id == @check.user_id %>
           
             <%= link_to 'やり直す', "/checks/#{@check.id}/edit", method: :get,class: 'btn btn-default' %>
             <%= link_to '削除', "/checks/#{@check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
            <% end %>     
-          </li>
-      </ul>
+      </div>
   </div> 
   
   

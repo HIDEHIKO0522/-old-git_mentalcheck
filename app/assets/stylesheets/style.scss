@@ -131,7 +131,7 @@ div.contents_row {
      bottom:  10px;
      right:   0px;
      height: 1200px;
-     width:  700px;
+     width:  1200px;
      margin: auto;  
   .success {
     top:     70px;
@@ -151,9 +151,35 @@ div.contents_row {
     width:  450px;
     margin:  auto;
   }
+  table.list, table.attr {
+    font-size: 80%;
+    width: 80%;
+  }
   
+  table.list th, table.attr th {
+    background-color: #499;
+    color: white;
+    font-size: 80%;
+    font-weight: normal;
+  }
   
+  table.list td, table.list th,
+  table.attr td, table.attr th {
+    padding: 4px;
+  }
   
+  table.list th {
+    text-align: center;
+  }
+  
+  table.attr th {
+    text-align: right;
+  }
+  
+  table.list td, table.attr td {
+    background-color: #cee;
+  }  
+
 }  
 //入力フォームの設定
 form {
@@ -205,7 +231,7 @@ div.contents_image {
   position: relative;
   width: 5em;
   height: 1em;
-  font-size: 25px;
+  font-size: 22px;
 
 }
 .star-rating-front {
