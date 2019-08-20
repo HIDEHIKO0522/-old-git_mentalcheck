@@ -1,13 +1,13 @@
 <div class="contents row">
-    <div class="contents_image">
+  <div class="contents_image">
 
   <p>ストレスチェック結果：<%= @check.chk_score %>
    
-    <div class="star-rating">
-      <div class="star-rating-front" style="width: 50%">★★★★★</div>
-         <!--<span class="star-rating"><i class="star-actived rate-%= review.rate %>0"></i></span>-->
-      <div class="star-rating-back">★★★★★</div>
-    </div>
+      <div class="star-rating">
+        <div class="star-rating-front" style="width: 50%">★★★★★</div>
+           <!--<span class="rating-star1" ><i class="star-actived rate-%= @check.chk_score %>0"></li></span>-->
+        <div class="star-rating-back">★★★★★</div>
+      </div>
   </p>
     
     <p>診断コメント
@@ -28,9 +28,17 @@
     
   <p>診断前のストレス認知度:<%= @check.pre_score %>
     <div class="star-rating">
-      <div class="star-rating-front" style="width: 50%">★★★★★</div>
-      <div class="star-rating-back">★★★★★</div>
+       <div class="star-rating-front" style="width: 50%">★★★★★</div>
+       <div class="star-rating-back">★★★★★</div>
     </div>
+    <!--<span class="star-rating">-->
+      <!--<input type="radio" name="pre_score" value="5"><i></i>-->
+      <!--<input type="radio" name="pre_score" value="10"><i></i>-->
+      <!--<input type="radio" name="pre_score" value="15"><i></i>-->
+      <!--<input type="radio" name="pre_score" value="20"><i></i>-->
+      <!--<input type="radio" name="pre_score" value="25"><i></i>-->
+    <!--</span>-->
+    <!--<strong class="choice">Choose a rating</strong>-->
   </p>
 
   <div class="content_comment">
@@ -47,8 +55,8 @@
       <p>適正です。今の気分に素直に行動し、特にストレス度が高い場合、休息第一で行動してください！</p>
     <% end %>
     </P>
-    </div>
-   <div class="content_more">
+  </div>
+  <div class="content_more">
       <div class="more_list">
             <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br>
           
@@ -58,8 +66,8 @@
             <%= link_to '削除', "/checks/#{@check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
            <% end %>     
       </div>
-  </div> 
+   </div> 
+  </div>
   
-  
-  </div> 
+
 </div>

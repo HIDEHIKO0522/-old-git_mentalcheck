@@ -130,8 +130,8 @@ div.contents_row {
      top:     0px;
      bottom:  10px;
      right:   0px;
-     height: 1200px;
-     width:  1200px;
+     height: 1000px;
+     width:  1000px;
      margin: auto;  
   .success {
     top:     70px;
@@ -151,9 +151,11 @@ div.contents_row {
     width:  450px;
     margin:  auto;
   }
+  
+//index　表のフォーム設定  
   table.list, table.attr {
     font-size: 80%;
-    width: 80%;
+    width: 100%;
   }
   
   table.list th, table.attr th {
@@ -179,7 +181,48 @@ div.contents_row {
   table.list td, table.attr td {
     background-color: #cee;
   }  
+  
+  div.contents_image {
+     left:    0px;
+     top:     0px;
+     bottom:  10px;
+     right:   0px;
+     height: 900px;
+     width:  450px;
+     margin: auto;
 
+    .div.content_more {
+      .more_list {
+       top:      20px;
+       bottom:   0px;
+       right:    0px;
+       left:     0px;
+       height:  40px;
+       width:  200px;
+       margin:  auto;
+       text-align: left;
+      } 
+    }
+  }
+
+//星評価（レーティング）
+  .star-rating {
+    position: relative;
+    width: 6em;
+    height: 1em;
+    font-size: 25px;
+  
+  }
+  .star-rating-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffcc33;
+  }
+  .star-rating-back {
+    color: #ccc;
+  }
 }  
 //入力フォームの設定
 form {
@@ -203,52 +246,14 @@ form {
   }
 }
 
-//indexアクションでの設定
-div.contents_image {
-     left:    0px;
-     top:     0px;
-     bottom:  10px;
-     right:   0px;
-     height: 900px;
-     width:  450px;
-     margin: auto;
+//showアクションでの設定
 
-      div.content_more {
-    .more_list {
-     top:      20px;
-     bottom:   0px;
-     right:    0px;
-     left:     0px;
-     height:  40px;
-     width:  200px;
-     margin:  auto;
-     text-align: left;
 
-    }  
-  }
-}
-.star-rating {
-  position: relative;
-  width: 5em;
-  height: 1em;
-  font-size: 22px;
 
-}
-.star-rating-front {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  color: #ffcc33;
-}
-
-.star-rating-back {
-  color: #ccc;
-}
 
 //application "Copyright メンタルチェック 2019."の設定"
 footer {
-  Padding: 5px 0 15px 10px;　　
+  Padding: 5px 0 0px 10px;　　
 
   p {
      font-size: 10px;
