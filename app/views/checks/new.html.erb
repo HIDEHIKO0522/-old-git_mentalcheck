@@ -7,28 +7,28 @@
     
       <p><%= current_user.nickname %>さんの今の気分を選んでください。</p> 
         <%= f.label :pre_score, "回答" %>
-         <%= f.select :pre_score, [["とても悪い", 25], ["悪い", 20], ["普通", 15], ["良い", 10], ["とても良い", 5]] ,:prompt => "選択してください", include_hidden: false %>
+         <%= f.select :pre_score, [["とても悪い", 100], ["悪い", 80], ["普通", 60], ["良い", 40], ["とても良い", 20]] ,:prompt => "選択してください", include_hidden: false %>
 
      <p><%= current_user.nickname %>さん、下記5つの質問に答えてください。</p> 
        <p>Q1: <%= @question1 %></P>
          <%= f.label :chk_score1, "回答" %>
-         <%= f.select :chk_score1, [["よくある", 5], ["時々ある", 4], ["少しある", 3], ["あまりない", 2], ["ほとんどない", 1]] ,:prompt => "選択してください", include_hidden: false %>
+         <%= f.select :chk_score1, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
 
        <p>Q2: <%= @question2 %></P>
          <%= f.label :chk_score2, "回答" %>
-         <%= f.select :chk_score2, [["よくある", 5], ["時々ある", 4], ["少しある", 3], ["あまりない", 2], ["ほとんどない", 1]] ,:prompt => "選択してください", include_hidden: false %>
+         <%= f.select :chk_score2, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
 
       <p>Q3: <%= @question3 %></P>
          <%= f.label :chk_score3, "回答" %>
-       　<%= f.select :chk_score3, [["よくある", 5], ["時々ある", 4], ["少しある", 3], ["あまりない", 2], ["ほとんどない", 1]] ,:prompt => "選択してください", include_hidden: false %>
+       　<%= f.select :chk_score3, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
 
        <p>Q4: <%= @question4 %></P>
          <%= f.label :chk_score4, "回答" %>
-        <%= f.select :chk_score4, [["よくある", 5], ["時々ある", 4], ["少しある", 3], ["あまりない", 2], ["ほとんどない", 1]] ,:prompt => "選択してください", include_hidden: false %>
+        <%= f.select :chk_score4, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
 
        <p>Q5: <%= @question5 %></P>
          <%= f.label :chk_score5, "回答" %>
-       <%= f.select :chk_score5, [["よくある", 5], ["時々ある", 4], ["少しある", 3], ["あまりない", 2], ["ほとんどない", 1]] ,:prompt => "選択してください", include_hidden: false %>
+       <%= f.select :chk_score5, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
 
        <div>
    <%= f.submit  value="診断結果へ" %>

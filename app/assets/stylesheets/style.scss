@@ -206,23 +206,50 @@ div.contents_row {
   }
 
 //星評価（レーティング）
-  .star-rating {
+      //診断後のレート色付け
+     .star-ratings-sprite {
+     background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+     font-size: 0;
+     height: 21px;
+     line-height: 0;
+     overflow: hidden;
+     text-indent: -999em;
+     width: 110px;
+     margin: 0 auto;
+     }
+    .star-ratings-sprite-rating {
+     background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+     background-position: 0 100%;
+     float: left;
+     height: 21px;
+     display: block;
+     }
+    // 診断前のレート色付け
+    .star-rating {
     position: relative;
-    width: 6em;
-    height: 1em;
-    font-size: 25px;
-  
-  }
-  .star-rating-front {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    color: #ffcc33;
-  }
-  .star-rating-back {
-    color: #ccc;
-  }
+    display:inline-block;
+    font-size: 20px;
+    }
+     .star-rating .star-rating-item{
+      position:absolute;
+      overflow: hidden;
+      }
+      .star-rating .star-rating-item:before{
+      content:"★★★★★";
+      color: #ffcc33;
+      }
+      .star-rating:after {
+      content:"★★★★★";
+      color: #ccc;
+      }
+
+    // .star-ratings-sprite-rating2 {
+    // background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+    // background-position: 0 100%;
+    // float: left;
+    // height: 21px;
+    // display: block;
+    // }
 }  
 //入力フォームの設定
 form {
@@ -246,7 +273,7 @@ form {
   }
 }
 
-//showアクションでの設定
+
 
 
 

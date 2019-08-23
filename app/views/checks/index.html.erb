@@ -5,11 +5,16 @@
     <%= current_user.nickname %>さん</h2><br>
     <% end %>
   <h2>今感じているストレスレベルと診断テスト後のストレスレベルを比較して、ストレス感度を確認し、
-  心のケアに役立てましょう！</h2> 
+  心のケアに役立てましょう！
 
   <% if user_signed_in? && current_user.id %>
     <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>  
   <% end %> 
+  </h2><br>
+  <!--%= form_tag :search_checks, method: :get, class: "search" do %>-->
+    <!--%= text_field_tag "q", params[:q] %>-->
+    <!--%= submit_tag "検索" %>-->
+  <!--% end %>  -->
   <table class="list">  
    <thead>
      <tr>
@@ -22,7 +27,7 @@
      </tr>
    </thead>
    <tbody>
-   <% @checks.each do |check| %>
+      <% @checks.each do |check| %> 
     <tr>
        <td><%= check.created_at.strftime("%Y/%m/%d %H:%M") %></td>
        <td><a href="/users/<%= check.user_id %>">
@@ -30,31 +35,34 @@
         </a>
        </td>
        <td>
-         <!--%= check.chk_score %>-->
-          <div class="star-rating">
-            <div class="star-rating-front" style="width: 50%">★★★★★</div>
-               <!--<span class="star-rating"><i class="star-actived rate-%= review.rate %>0"></i></span>-->
-            <div class="star-rating-back">★★★★★</div>
+           <div class="star-ratings-sprite">
+             <span style="width:<%= check.chk_score %>%" class="star-ratings-sprite-rating"></span>
           </div>
        </td>
        <td>
-         <!--%= check.pre_score %>-->
-          <div class="star-rating">
-            <div class="star-rating-front" style="width: 50%">★★★★★</div>
-            <div class="star-rating-back">★★★★★</div>
+           <div class="star-rating">
+             <span style="width:<%= check.pre_score %>% " class="star-rating-item"></span>
           </div>
        </td>
        <td>
-           <% if check.dif_score > 20 then %>
-            <p>感度に大いに問題があります。心の疲れを感じ取れなくなったら危険です。すぐに休養しましょう！</p>
-          <% elsif check.dif_score > 15 && check.dif_score <= 20 then %>
-            <p>感度が鈍ってきているよです。疲れがたまってきてませんか？　積極的に休みを取り、心の感度を取り戻しましょう！</p>
-          <% elsif check.dif_score > 10 && check.dif_score <= 15 then %>
-            <p>感度がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
-          <% elsif check.dif_score > 5 && check.dif_score <= 10 then %>
-            <p>今は問題ありませんが、無理は禁物です。こころのリフレッシュを常に心がけましょう！</p>
+           <% if check.dif_score > 60 then %>
+            <p>ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
+            <% elsif check.dif_score > 30 && check.dif_score <= 60 then %>
+            <p>ご自身で感じているよりも、ストレスがかかっているようです。症状が重くなる前に積極的に休みを取りましょう！</p>
+            <% elsif check.dif_score > 10 && check.dif_score <= 30 then %>
+            <p>ストレスの感じ方が鈍ってきているようです。日常生活のストレス環境を見直し、適度な休息を取り入れて下さい！</p>
+            <% elsif check.dif_score > 5 && check.dif_score <= 10 then %>
+            <p>ストレスの感じ方がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
+            <% elsif check.dif_score > -5 && check.dif_score <= 5 then %>
+            <p>ストレス値と今感じている気分は同じレベルです。気分に応じた休息を心がけてください。特にストレス値が高い場合、休息第一で行動してください！</p>
+             <% elsif check.dif_score > -20 && check.dif_score <= -5 then %>
+            <p>ストレスに対し、やや敏感になっているようです。ストレスに対しあまり反応しすぎず、心のバランスを維持していきましょう。</p>
+            <% elsif check.dif_score > -30 && check.dif_score <= -20 then %>
+            <p>ストレスに対し、敏感になっているようです。ご自身が思っているほど状態は悪くありません。日常生活にリラックスする機会を作りましょう。</p>
+            <% elsif check.dif_score > -60 && check.dif_score <= -30 then %>
+            <p>ストレスの感じ方が過剰気味です。必要以上にストレスを感じることは、心のバランスを崩してしまいます。</p>
           <% else %>
-            <p>適正です。今の気分に素直に行動し、特にストレス度が高い場合、休息第一で行動してください！</p>
+            <p>ストレスの感じ方が明らかに過剰です。思い違いの要因もないですか？今一度要因を見直してみてください。</p>
           <% end %>
         </td>
         <td>
@@ -64,8 +72,9 @@
         <% end %>
         </td>
     </tr>    
-   <% end %> 
+      <% end %> 
   </tbody>
-  </table>
+ </table> 
+
   <%= paginate(@checks) %> 
 </div>    

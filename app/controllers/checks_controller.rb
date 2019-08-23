@@ -4,7 +4,7 @@ class ChecksController < ApplicationController
   
 
   def index
-    @checks = Check.includes(:user).page(params[:page]).per(10).order("created_at DESC")
+    @checks = Check.includes(:user).page(params[:page]).per(8).order("created_at DESC")
   end  
 
   def new
@@ -57,7 +57,10 @@ class ChecksController < ApplicationController
     end  
   end    
  
-
+  # def search
+    # @checks = Check.search(params[:q])
+      # render "index"
+  # end  
 
   
   private

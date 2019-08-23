@@ -10,7 +10,6 @@ class CreateChecks < ActiveRecord::Migration[5.2]
       t.integer   :chk_score4
       t.integer   :chk_score5
       t.integer   :dif_score
-      t.integer   :answer_id
       t.timestamps
     end
   end
