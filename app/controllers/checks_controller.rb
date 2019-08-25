@@ -16,6 +16,7 @@ class ChecksController < ApplicationController
     @question5 = Question.where( category:5).order("RAND()").limit(1).map{|v| v.text}
   
   @check = Check.new
+  
   end  
 
   def create
@@ -28,9 +29,16 @@ class ChecksController < ApplicationController
                        chk_score: check_params[:chk_score],
                        dif_score: check_params[:dif_score],
                        user_id: current_user.id )
-    @check.save
+                       
+    
+     if @check.save
+       render 'show' #成功の場合
+      else        
+        render 'new' #失敗の場合
+     end
+   
   end
-
+    
   def show
     @check = Check.find(params[:id])
   end 
@@ -58,8 +66,7 @@ class ChecksController < ApplicationController
   end    
  
   # def search
-    # @checks = Check.search(params[:q])
-      # render "index"
+  # @checks = Check.where('check.user.nickname LIKE(?)', "%#{params[:nickname]}%")
   # end  
 
   

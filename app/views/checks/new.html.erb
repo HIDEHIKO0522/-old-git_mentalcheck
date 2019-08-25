@@ -1,6 +1,10 @@
  <div class="contents row">
    <div class="contents_form">
 
+  <% if @check.errors.any? %>
+     <p>質問項目全てに回答して下さい。</p>
+  <% end %>
+  
   <%= form_for(@check) do |f| %>
 
    <!--%= render "shared/errors", obj: @check %>-->

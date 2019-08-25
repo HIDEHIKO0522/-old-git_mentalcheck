@@ -1,12 +1,8 @@
 <div class="contents_row">
   <div class="contents_image">
 
-  <p>ストレスチェック結果：<%= @check.chk_score %>
-   
-      <div class="star-ratings-sprite">
-        <span style="width:<%= @check.chk_score %>%" class="star-ratings-sprite-rating1"></span>
-      </div>
-  </p>
+  <p>ストレスチェック結果：<%= @check.chk_score %>ポイント<div class="star-ratings-sprite"><span style="width:<%= @check.chk_score %>%" class="star-ratings-sprite-rating"></span>
+      </div></p>
     
     <p>診断コメント
      <% if @check.chk_score > 80 then %>
@@ -24,14 +20,11 @@
 
 
     
-  <p>診断前のストレス認知度:<%= @check.pre_score %>
-    <div class="star-ratings-sprite">
-      <span style="width:<%= @check.pre_score %>% " class="star-ratings-sprite-rating2"></span>
-    </div>
-  </p>
+  <p>診断前のストレス認知度:<%= @check.pre_score %>ポイント　<div class="star-rating"><span style="width:<%= @check.pre_score %>% " class="star-rating-item"></span>
+    </div></p>
 
   <div class="content_comment">
-    <p>ストレス感度は<%= @check.dif_score %>です</p>
+    <p>ストレス感度コメント</p>
       <% if @check.dif_score > 60 then %>
             <p>ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
           <% elsif @check.dif_score > 30 && @check.dif_score <= 60 then %>
@@ -51,7 +44,7 @@
           <% else %>
             <p>ストレスの感じ方が明らかに過剰です。思い違いの要因もないですか？今一度要因を見直してみてください。</p>
           <% end %>
-    </P>
+
   </div>
   <div class="content_more">
       <div class="more_list">

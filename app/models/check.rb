@@ -30,7 +30,6 @@ class Check < ApplicationRecord
     } 
   
   before_save do
-
     self.chk_score = chk_score1 + chk_score2 + chk_score3 + chk_score4 + chk_score5
     self.dif_score = (chk_score1 + chk_score2 + chk_score3 + chk_score4 + chk_score5 - pre_score)
   end
