@@ -11,11 +11,12 @@
     <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>  
   <% end %> 
   </h2><br>
-  <!--%= form_tag :search_checks, method: :get, class: "search" do %>-->
-   <!--input class="search__query" name="check.user.nickname" placeholder="ニックネームで検索" type="text" value="">-->
-   <!--button class="btn-search" title="検索" type="submit"><i class="icon-search"></i></button>-->
-   <!--/input>-->
-  <!--% end %>-->
+  
+   <%= form_tag :search_checks, method: :get, class: "search" do %>
+   <%= text_field_tag :search, '', class: 'form-control', placeholder: 'ニックネームを入力' %> 
+  <%= submit_tag "検索" %>
+  <% end %>  
+  
   <table class="list">  
    <thead>
      <tr>
@@ -77,5 +78,5 @@
   </tbody>
  </table> 
 
-  <%= paginate(@checks) %> 
+  <%= paginate(@checks) %>
 </div>    

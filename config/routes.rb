@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root 'checks#index'
     resources :users, only: [:show ]    
     resources :checks do
-      # get "search",  on: :collection
-    end  
+      get "search",  on: :collection
+    end
 
 end

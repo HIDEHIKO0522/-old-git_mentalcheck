@@ -1,6 +1,17 @@
 <div class="contents_row">
-  <p><%= @nickname %>さんのストレスチェック一覧</p>
+    
+  <h2>こんにちは
+    <% if user_signed_in? && current_user.id %>
+    <%= current_user.nickname %>さん</h2><br>
+    <% end %>
+  <h2>今感じているストレスレベルと診断テスト後のストレスレベルを比較して、ストレス感度を確認し、
+  心のケアに役立てましょう！
 
+  <% if user_signed_in? && current_user.id %>
+    <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>  
+  <% end %> 
+  </h2><br>
+  <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br>
   <table class="list">  
    <thead>
      <tr>
@@ -55,18 +66,17 @@
           <% end %>
         </td>
         <td>
+            <% if user_signed_in? && current_user.id == check.user_id %>
             <%= link_to '編集', "/checks/#{check.id}/edit", method: :get,class: 'btn btn-default' %>
             <%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
+            <% end %>
         </td>
     </tr>   
        <% end %>   
   </tbody>
   </table>
-    <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br>
- 
-  <%= paginate(@checks) %> 
-</div>       
-   
-   
-   
+  
+  <%= paginate(@check) %>
 
+</div>       
+    

@@ -1,14 +1,15 @@
 class Check < ApplicationRecord
  
-  # class << self
-    # def search(query)
-      # rel = order("user_id")
-        # if query.present?
-          # rel = rel.where("name LIKE (?) ", "%#{query}%")
-        # end
-        # rel
-    # end    
-  # end
+  def self.search(search)
+      if search
+        Check.where(['nickname LIKE ?', "%#{search}%"])
+      else
+        # Check.all, notice: "対象者はいません"
+        # flash[:notice] = "対象者はいません"
+        redirect_to @check, notice: "対象者はいません"
+      end
+  end
+  
   
   has_many :questions
   belongs_to :user

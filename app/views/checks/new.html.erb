@@ -1,4 +1,4 @@
- <div class="contents row">
+ <div class="contents_row">
    <div class="contents_form">
 
   <% if @check.errors.any? %>
@@ -6,9 +6,7 @@
   <% end %>
   
   <%= form_for(@check) do |f| %>
-
-   <!--%= render "shared/errors", obj: @check %>-->
-    
+  
       <p><%= current_user.nickname %>さんの今の気分を選んでください。</p> 
         <%= f.label :pre_score, "回答" %>
          <%= f.select :pre_score, [["とても悪い", 100], ["悪い", 80], ["普通", 60], ["良い", 40], ["とても良い", 20]] ,:prompt => "選択してください", include_hidden: false %>

@@ -1,9 +1,4 @@
- <div class="contents_row">
-   <div class="contents_form">
-   <h1>やり直す</h1>
  
-  <%= form_for (@check) do |f| %>
-   
       <p><%= current_user.nickname %>さんの今の気分を選んでください。</p> 
         <%= f.label :pre_score, "回答" %>
          <%= f.select :pre_score, [["とても悪い", 100], ["悪い", 80], ["普通", 60], ["良い", 40], ["とても良い", 20]] ,:prompt => "選択してください", include_hidden: false %>
@@ -28,11 +23,7 @@
        <p>Q5: <%= @question5 %></P>
          <%= f.label :chk_score5, "回答" %>
        <%= f.select :chk_score5, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
- 
 
        <div>
    <%= f.submit  value="診断結果へ" %>
    </div>
- <% end %>
- </div>
-</div>   

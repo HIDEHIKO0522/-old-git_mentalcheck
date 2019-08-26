@@ -28,6 +28,7 @@ class ChecksController < ApplicationController
                        chk_score5: check_params[:chk_score5],
                        chk_score: check_params[:chk_score],
                        dif_score: check_params[:dif_score],
+                       nickname: current_user.nickname,
                        user_id: current_user.id )
                        
     
@@ -52,11 +53,23 @@ class ChecksController < ApplicationController
     @question5 = Question.where( category:5).order("RAND()").limit(1).map{|v| v.text}
     
     @check = Check.find(params[:id])
+    
   end
 
   def update
-    @check = Check.find(params[:id])
+       @check = Check.find(params[:id])
+   
+      if @check.user_id == current_user.id
+        @check.update(check_params)
+      end  
+      
+     if @check.save
+       render 'update' #成功の場合
+      else        
+        render 'edit' #失敗の場合
+     end
   end
+
  
   def destroy
       check = Check.find(params[:id])
@@ -65,23 +78,23 @@ class ChecksController < ApplicationController
     end  
   end    
  
-  # def search
-  # @checks = Check.where('check.user.nickname LIKE(?)', "%#{params[:nickname]}%")
-  # end  
+  def search
+    @checks = Check.search(params[:search])
+    @check = Check.page(params[:page]).per(8).order("created_at DESC")
+  end  
 
   
   private
   def check_params
-    params.require(:check).permit(:pre_score,  :chk_score1, :chk_score2, :chk_score3, :chk_score4, :chk_score5,
-                  :chk_score, :dif_score)
+    params.require(:check).permit(:pre_score,  
+                                  :chk_score1,
+                                  :chk_score2,
+                                  :chk_score3,
+                                  :chk_score4,
+                                  :chk_score5,
+                                  :chk_score,
+                                  :dif_score)
   end  
-  
-  
-  # def full_score?
-    
-    # pre_score? && chk_score1? && chk_score2? && chk_score3? && chk_score4? && chk_score5?
-  # end
- 
  
   def move_to_index
     redirect_to action: :index unless user_signed_in?
