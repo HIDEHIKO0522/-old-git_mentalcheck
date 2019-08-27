@@ -80,7 +80,7 @@ h6, {
 
 header.header {
   border-bottom: 1px solid #292929;
-  background-color: #d7ffee;
+  background-color: #ffeeff;
   position: fixed;
   top: 0;
   left:  0;
@@ -89,19 +89,22 @@ header.header {
   
   div.header__bar.row {
     position: relative;
+    top: 10px;
+    left: 500px;
     
-    h1.grid-6 {
+    h1.grid-6 {       //タイトル「ストレス感度チェック」の表示
       font-size: 30px;
-      line-height: 41px;
+      line-height: 45px;
       color: #800080;
       float: left;
+      margin-right: 20px;
       a {
         display: block;
       }
     }
-    div.grid-6 {
+      div.grid-6 {    //ログインボタン、新規登録ボタンの配置
       float: right;
-      text-align: right;
+      text-align: right;  //文字揃え
     }
   }
 }
@@ -113,7 +116,7 @@ header.header {
     position: absolute;
     left:   0;
     top:    30px;
-    bottom: 0;
+    bottom: 100px;
     right:  0;
     margin: auto;
   }
@@ -126,13 +129,14 @@ header.header {
 }
 
 div.contents_row {
-      left:    0px;
+     left:    0px;
      top:     0px;
      bottom:  10px;
      right:   0px;
-     height: 1000px;
+     height: 700px;
      width:  1000px;
      margin: auto;  
+
   .success {
     top:     70px;
     bottom:   0px;
@@ -163,26 +167,33 @@ div.contents_row {
     color: white;
     font-size: 80%;
     font-weight: normal;
+    
   }
   
   table.list td, table.list th,
   table.attr td, table.attr th {
     padding: 4px;
   }
+
+  
   
   table.list th {
     text-align: center;
   }
   
   table.attr th {
-    text-align: right;
+    text-align: left;
   }
   
   table.list td, table.attr td {
     background-color: #cee;
+    text-align: center;
   }  
   
-  div.contents_image {
+  .stress_sensivility {
+   text-align: left;
+  }
+  .div.contents_image {
      left:    0px;
      top:     0px;
      bottom:  10px;
@@ -190,8 +201,11 @@ div.contents_row {
      height: 900px;
      width:  450px;
      margin: auto;
-
-    .div.content_more {
+  }   
+  .check_start {
+    text-align: center; 
+  } 
+  .div.content_more {
       .more_list {
        top:      20px;
        bottom:   0px;
@@ -202,7 +216,6 @@ div.contents_row {
        margin:  auto;
        text-align: left;
       } 
-    }
   }
 
 //星評価（レーティング）
@@ -215,12 +228,12 @@ div.contents_row {
      overflow: hidden;
      text-indent: -999em;
      width: 110px;
-     margin: 0 auto;
+     margin: auto;
      }
     .star-ratings-sprite-rating {
      background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
      background-position: 0 100%;
-     float: left;
+    // float: left;
      height: 21px;
      display: block;
      }
@@ -231,7 +244,7 @@ div.contents_row {
     font-size: 20px;
     }
      .star-rating .star-rating-item{
-      position:absolute;
+      position: absolute;
       overflow: hidden;
       }
       .star-rating .star-rating-item:before{
@@ -241,6 +254,9 @@ div.contents_row {
       .star-rating:after {
       content:"★★★★★";
       color: #ccc;
+      text-indent: -999em;
+      width: 110px;
+      margin: auto;
       }
 }  
 //入力フォームの設定
@@ -269,7 +285,15 @@ form {
 
 //application "Copyright メンタルチェック 2019."の設定"
 footer {
-  Padding: 5px 0 0px 10px;　　
+     Padding: 5px 0 0px 10px;
+     left:    0px;
+     top:     0px;
+     bottom:  10px;
+     right:   0px;
+     height: 0px;
+     width:  1000px;
+     margin: auto; 
+     
 
   p {
      font-size: 10px;

@@ -1,18 +1,22 @@
 <div class="contents_row">
-    
-  <h2>こんにちは
+   <div class="check_start">
     <% if user_signed_in? && current_user.id %>
-    <%= current_user.nickname %>さん</h2><br>
-    <% end %>
-  <h2>今感じているストレスレベルと診断テスト後のストレスレベルを比較して、ストレス感度を確認し、
-  心のケアに役立てましょう！
-
-  <% if user_signed_in? && current_user.id %>
-    <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>  
-  <% end %> 
-  </h2><br>
-  <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br>
+      <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %> 
+      <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br>
+    <% end %> 
+   </div>  
+  
   <table class="list">  
+   
+   <colgroup>
+        <col style="width:15%;">
+        <col style="width:5%;">
+        <col style="width:15%;">
+        <col style="width:15%;">
+        <col style="width:40%;">
+        <col style="width:10%;">
+    </colgroup>
+  
    <thead>
      <tr>
        <th>更新日</th>
@@ -20,7 +24,7 @@
        <th>ストレスチェック<br>結果</th>
        <th>診断前のストレス<br>認知度</th>
        <th>ストレス感度</th>
-       <th>編集・削除</th>
+       <th>編集.削除</th>
      </tr>
    </thead>
    <tbody>
@@ -45,6 +49,7 @@
            </div>
        </td>
        <td>
+           <div class="stress_sensivility">
            <% if check.dif_score > 60 then %>
             <p>ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
             <% elsif check.dif_score > 30 && check.dif_score <= 60 then %>
@@ -60,14 +65,14 @@
             <% elsif check.dif_score > -30 && check.dif_score <= -20 then %>
             <p>ストレスに対し、敏感になっているようです。ご自身が思っているほど状態は悪くありません。日常生活にリラックスする機会を作りましょう。</p>
             <% elsif check.dif_score > -60 && check.dif_score <= -30 then %>
-            <p>ストレスの感じ方が過剰気味です。必要以上にストレスを感じることは、心のバランスを崩してしまいます。</p>
+            <p>ストレスの感じ方が過剰気味です。ご自身の思いよりもストレスはかかっていまんせんので、リラックスを心がけて下さい。</p>
           <% else %>
             <p>ストレスの感じ方が明らかに過剰です。思い違いの要因もないですか？今一度要因を見直してみてください。</p>
           <% end %>
-        </td>
+        </div>
         <td>
             <% if user_signed_in? && current_user.id == check.user_id %>
-            <%= link_to '編集', "/checks/#{check.id}/edit", method: :get,class: 'btn btn-default' %>
+            <!--%= link_to '編集', "/checks/#{check.id}/edit", method: :get,class: 'btn btn-default' %>-->
             <%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
             <% end %>
         </td>

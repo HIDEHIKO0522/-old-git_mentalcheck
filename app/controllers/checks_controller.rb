@@ -4,7 +4,7 @@ class ChecksController < ApplicationController
   
 
   def index
-    @checks = Check.includes(:user).page(params[:page]).per(8).order("created_at DESC")
+    @checks = Check.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end  
 
   def new
@@ -80,7 +80,7 @@ class ChecksController < ApplicationController
  
   def search
     @checks = Check.search(params[:search])
-    @check = Check.page(params[:page]).per(8).order("created_at DESC")
+    @check = Check.page(params[:page]).per(5).order("created_at DESC")
   end  
 
   
