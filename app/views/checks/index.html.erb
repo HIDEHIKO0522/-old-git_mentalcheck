@@ -11,11 +11,12 @@
       <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>  
     <% end %> 
    </div>
+   <% if user_signed_in? && current_user.id %>
    <%= form_tag :search_checks, method: :get, class: "search" do %>
    <%= text_field_tag :search, '', class: 'form-control', placeholder: 'ニックネームを入力' %> 
   <%= submit_tag "検索" %>
   <% end %>  
-  
+  <% end %> 
   <table class="list">  
   
    <colgroup>

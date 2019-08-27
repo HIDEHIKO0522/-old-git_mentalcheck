@@ -2,40 +2,48 @@
    <div class="contents_form">
 
   <% if @check.errors.any? %>
-     <p>質問項目全てに回答して下さい。</p>
+     <h1 id="red">質問項目全てに回答して下さい。</h1>
   <% end %>
   
   <%= form_for(@check) do |f| %>
-  
-      <p><%= current_user.nickname %>さんの今の気分を選んでください。</p> 
-        <%= f.label :pre_score, "回答" %>
+       <div class="questions_form0">
+      <h2>今の気分を回答しましょう！</h2>
+        <p><%= current_user.nickname %>さん、今の気分にあてはまるものを下記より選んでください。</p> 
+         <%= f.label :pre_score, "回答:" %>
          <%= f.select :pre_score, [["とても悪い", 100], ["悪い", 80], ["普通", 60], ["良い", 40], ["とても良い", 20]] ,:prompt => "選択してください", include_hidden: false %>
-
-     <p><%= current_user.nickname %>さん、下記5つの質問に答えてください。</p> 
-       <p>Q1: <%= @question1 %></P>
-         <%= f.label :chk_score1, "回答" %>
+       </div> 
+      <h2>ではメンタルチェック開始しましょう！
+      <%= current_user.nickname %>さん、下記5つの質問に答えてください。</h2> 
+       <div class="questions_form1">
+          <p>Q1: <%= @question1 %></p>
+ 
+         <%= f.label :chk_score1, "回答:" %>
          <%= f.select :chk_score1, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
-
-       <p>Q2: <%= @question2 %></P>
-         <%= f.label :chk_score2, "回答" %>
+       </div> 
+       <div class="questions_form2">
+          <p>Q2: <%= @question2 %></P>
+         <%= f.label :chk_score2, "回答:" %>
          <%= f.select :chk_score2, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
-
-      <p>Q3: <%= @question3 %></P>
-         <%= f.label :chk_score3, "回答" %>
-       　<%= f.select :chk_score3, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
-
-       <p>Q4: <%= @question4 %></P>
-         <%= f.label :chk_score4, "回答" %>
-        <%= f.select :chk_score4, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
-
-       <p>Q5: <%= @question5 %></P>
-         <%= f.label :chk_score5, "回答" %>
-       <%= f.select :chk_score5, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
-
-       <div>
-   <%= f.submit  value="診断結果へ" %>
-   </div>
- <% end %>
+       </div>  
+       <div class="questions_form3">
+          <p>Q3: <%= @question3 %></P>
+         <%= f.label :chk_score3, "回答:" %>
+         <%= f.select :chk_score3, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
+       </div>
+       <div class="questions_form4">
+          <p>Q4: <%= @question4 %></P>
+         <%= f.label :chk_score4, "回答:" %>
+         <%= f.select :chk_score4, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
+       </div>
+       <div class="questions_form5">
+          <p>Q5: <%= @question5 %></P>
+         <%= f.label :chk_score5, "回答:" %>
+         <%= f.select :chk_score5, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
+       </div>
+       <div class="submit">
+         <%= f.submit  value="診断結果へ" %>
+       </div>
+     <% end %>
  </div>
 </div>   
  

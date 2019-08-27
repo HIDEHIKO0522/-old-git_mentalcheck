@@ -59,6 +59,10 @@ h1{
    padding: 0;
 }
 
+#red {
+  color: #ff0000 ;
+}
+
 h3,{
    line-height: 1.77;
    font-size: 15px;
@@ -138,12 +142,12 @@ div.contents_row {
      margin: auto;  
 
   .success {
-    top:     70px;
+    top:     0px;
     bottom:   0px;
     right:    0px;
     left:     0px;
-    height: 400px;
-    width:  200px;
+    height: 700px;
+    width:  1000px;
     margin:  auto;
   }
   .contents_form {
@@ -151,10 +155,96 @@ div.contents_row {
     bottom:   0px;
     right:    0px;
     left:     0px;
-    height: 900px;
-    width:  450px;
+    height: 400px;
+    width:  600px;
     margin:  auto;
   }
+  
+   .questions_form0 {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    }
+    .questions_form0 p {
+        margin: 0; 
+        padding: 0;
+    }
+  
+   .questions_form1 {  //メンタルチェックQ1用のフォーム
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    }
+    .questions_form1 p {
+        margin: 0; 
+        padding: 0;
+    }
+    
+  .questions_form2 {  //メンタルチェックQ2用のフォーム
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #ff7d6e;/*文字色*/
+    background: #FFF;
+    border: solid 3px #ff7d6e;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    }
+    .questions_form2 p {
+        margin: 0; 
+        padding: 0;
+    }
+    
+    .questions_form3 {  //メンタルチェックQ3用のフォーム
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #00BCD4;/*文字色*/
+    background: #FFF;
+    border: solid 3px #00BCD4;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    }
+    .questions_form3 p {
+        margin: 0; 
+        padding: 0;
+    }
+    
+    .questions_form4 {  //メンタルチェックQ4用のフォーム
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #5d627b;/*文字色*/
+    background: #FFF;
+    border: solid 3px #5d627b;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    }
+    .questions_form4 p {
+        margin: 0; 
+        padding: 0;
+    }
+    
+    .questions_form5 {  //メンタルチェックQ5用のフォーム
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #ffc06e;/*文字色*/
+    background: #FFF;
+    border: solid 3px #ffc06e;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    }
+    .questions_form5 p {
+        margin: 0; 
+        padding: 0;
+    }
+    .submit {
+      text-align: center;  //文字揃え
+    }
+  
   
 //index　表のフォーム設定  
   table.list, table.attr {
