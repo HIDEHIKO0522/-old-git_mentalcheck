@@ -28,6 +28,9 @@ a {
   }
 }
 
+.under {
+text-decoration: underline;
+}
 
 .btn {
     Padding: 5px 15px ;
@@ -133,6 +136,7 @@ header.header {
 }
 
 div.contents_row {
+     padding: 30px;
      left:    0px;
      top:     0px;
      bottom:  10px;
@@ -142,23 +146,24 @@ div.contents_row {
      margin: auto;  
 
   .success {
-    top:     100px;
+    top:      0px;
     bottom:   0px;
     right:    0px;
     left:     0px;
     height: 800px;
     width:  1000px;
-    margin:  auto;
+    text-align: center;
   }
   .contents_form {
-    top:     0px;
+    top:      0px;
     bottom:   0px;
     right:    0px;
     left:     0px;
-    height: 500px;
-    width:  600px;
+    height: 800px;
+    width:  500px;
     margin:  auto;
   }
+
   .check_start {
     text-align: center; 
   }
@@ -290,74 +295,48 @@ div.contents_row {
      top:     0px;
      bottom:  10px;
      right:   0px;
-     height: 900px;
+     height: 1000px;
      width:  450px;
      margin: auto;
   }
-  　div.contents_answer {  // 診断コメント回答欄のフォーム
-    position: relative;
-    margin: 2em 0;
-    padding: 0.5em 1em;
-    border: solid 3px #62c1ce;
-  } 
-   div.contents_answer .box-title {
-    position: absolute;
-    display: inline-block;
-    top: -27px;
-    left: -3px;
-    padding: 0 9px;
-    height: 25px;
-    line-height: 25px;
-    font-size: 17px;
-    background: #62c1ce;
-    color: #ffffff;
-    font-weight: bold;
-    border-radius: 5px 5px 0 0;
-  }   
-  div.contents_answer p {
-      margin: 0; 
-      padding: 0;  
-  }   
+    //show　表のフォーム設定  
+    table.list_show, table.attr {
+      font-size: 20px;
+      width: 100%;
+    }
+    
+    table.list_show th, table.attr th {
+      background-color: #499;
+      color: white;
+      font-size: 80%;
+      font-weight: normal;
+    }
+    
+    table.list_show td, table.list th,
+    table.attr td, table.attr th {
+      padding: 4px;
+    }
+  
+    table.list_show th {
+      text-align: center;
+    }
+    
+    table.attr th {
+      text-align: center;
+    }
+    
+    table.list_show td, table.attr td {
+      background-color: #cee;
+      text-align: center;
+    }  
 
-//show　表のフォーム設定  
-  table.list_show, table.attr {
-    font-size: 20px;
-    width: 100%;
-  }
-  
-  table.list_show th, table.attr th {
-    background-color: #499;
-    color: white;
-    font-size: 80%;
-    font-weight: normal;
-  }
-  
-  table.list_show td, table.list th,
-  table.attr td, table.attr th {
-    padding: 4px;
-  }
-
-  table.list_show th {
-    text-align: center;
-  }
-  
-  table.attr th {
-    text-align: center;
-  }
-  
-  table.list_show td, table.attr td {
-    background-color: #cee;
-    text-align: center;
-  }  
-
- 
   .div.content_more {
        top:      20px;
        bottom:   0px;
        right:    0px;
        left:     0px;
        height:  800px;
-       width:  1000px;
+       width:  1200px;
        margin:  auto;
        text-align: center;
    }  
@@ -402,6 +381,32 @@ div.contents_row {
       width: 110px;
       margin: auto;
       }
+//チェック結果コメント欄      　
+      .contents_answer {
+      position: relative;
+      margin: 2em 0;
+      padding: 0.5em 1em;
+      border: solid 3px #FFC107;
+      } 
+      .contents_answer .box-title {
+      position: absolute;
+      display: inline-block;
+      top: -27px;
+      left: -3px;
+      padding: 0 9px;
+      height: 25px;
+      line-height: 25px;
+      font-size: 17px;
+      background: #FFC107;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 5px 5px 0 0;
+      }   
+      .contents_answer p {
+      margin: 0; 
+      padding: 0;  
+      }   
+  
 }  
 //入力フォームの設定
 form {
@@ -415,14 +420,14 @@ form {
   }
   input[type="submit"] {
     background-color: #57C3E9;
-    border-radius: 20px;
+    border-radius: 15px;
     color: #fff;
     border: 0;
-    font-size: 12px;
+    font-size: 20px;
     &:hover {
       background-color: lighten(#57C3E9, 10%);
     }
-  }
+  }  
 }
 //入力不備時のアラート
 

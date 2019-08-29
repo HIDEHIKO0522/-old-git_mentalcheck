@@ -2,18 +2,18 @@
    <div class="contents_form">
 
   <% if @check.errors.any? %>
-     <h1 id="red">質問項目全てに回答して下さい。</h1>
+     <h1 id="red">項目全てに回答して下さい。</h1>
   <% end %>
-  
+
   <%= form_for(@check) do |f| %>
        <div class="questions_form0">
-      <h2>今の気分を回答しましょう！</h2>
-        <p><%= current_user.nickname %>さん、今の気分にあてはまるものを下記より選んでください。</p> 
+      <h2>メンタル予測しましょう！</h2>
+        <p><%= current_user.nickname %>さん、今の気分を<span class="under">下記より選んでください。</span></p> 
          <%= f.label :pre_score, "回答:" %>
          <%= f.select :pre_score, [["とても悪い", 100], ["悪い", 80], ["普通", 60], ["良い", 40], ["とても良い", 20]] ,:prompt => "選択してください", include_hidden: false %>
        </div> 
       <h2>ではメンタルチェック開始しましょう！<br>
-      <%= current_user.nickname %>さん、下記5つの質問に答えてください。</h2> 
+      <%= current_user.nickname %>さん、<span class="under">下記5つの質問に答えてください。</span></h2> 
        <div class="questions_form1">
           <p>Q1: <%= @question1 %></p>
  

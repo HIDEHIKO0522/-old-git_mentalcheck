@@ -46,7 +46,7 @@
        <td>
           <div class="stress_sensivility">
            <% if check.dif_score > 60 then %>
-            <p>ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
+            <p id="red">ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
             <% elsif check.dif_score > 30 && check.dif_score <= 60 then %>
             <p>ご自身で感じているよりも、ストレスがかかっているようです。症状が重くなる前に積極的に休みを取りましょう！</p>
             <% elsif check.dif_score > 10 && check.dif_score <= 30 then %>

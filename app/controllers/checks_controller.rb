@@ -34,8 +34,14 @@ class ChecksController < ApplicationController
     
      if @check.save
        render 'show' #成功の場合
-      else        
-        render 'new' #失敗の場合
+      else   #失敗の場合
+    @question1 = Question.where( category:1).order("RAND()").limit(1).map{|v| v.text}
+    @question2 = Question.where( category:2).order("RAND()").limit(1).map{|v| v.text}
+    @question3 = Question.where( category:3).order("RAND()").limit(1).map{|v| v.text}
+    @question4 = Question.where( category:4).order("RAND()").limit(1).map{|v| v.text}
+    @question5 = Question.where( category:5).order("RAND()").limit(1).map{|v| v.text}
+   
+    render 'new' 
      end
    
   end

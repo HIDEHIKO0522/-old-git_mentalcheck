@@ -16,11 +16,11 @@
            <th></th>
            <th>％</th>
            <th>ストレス値</th>
-           <th>ストレス感（予測値とチェック結果との差）</th>
+           <th>ストレス感度（予測値とチェック結果との差）</th>
          </tr>
        </thead>
        <tbody>
-         <tr>
+          <tr>
            <th>ストレスチェック結果</th>
            <td><%= @check.chk_score %></td>
            <td>
@@ -33,7 +33,7 @@
            <td rowspan="2">
              <div class="stress_sensivility">
             <% if @check.dif_score > 60 then %>
-                  <p>ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
+                  <p id="red">ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
                 <% elsif @check.dif_score > 30 && @check.dif_score <= 60 then %>
                   <p>ご自身で感じているよりも、ストレスがかかっているようです。症状が重くなる前に積極的に休みを取りましょう！</p>
                 <% elsif @check.dif_score > 10 && @check.dif_score <= 30 then %>
@@ -53,7 +53,7 @@
                 <% end %>
               </div>
             </td>
-            </tr>
+          </tr>
           <tr>
             <th>ストレス予測値</th> 
             <td><%= @check.pre_score %></td>
@@ -67,29 +67,28 @@
           </tr>
        </tbody>
       </table>
-  </div>    
-  <div class="contents_answer">
+  </div>  
+   <div class="contents_answer">
     <span class="box-title">チェック結果コメント</span>
       <% if @check.chk_score > 80 then %>
-        <p>ストレスがかかり過ぎです！すぐに休みをとってください</p>
+        <p id="red">ストレスがかかり過ぎです！すぐに休みをとってください</p>
       <% elsif @check.chk_score > 60 && @check.chk_score <= 80 then %>
-        <p>かなり無理がきているようです。積極的に休みをとりましょう！</p>
+        <p>かなり無理されているようです。積極的に休みをとりましょう！</p>
       <% elsif @check.chk_score > 40 && @check.chk_score <= 60 then %>
-        <p>少し無理がきているようです。適時休みをとり、ストレスを溜めないように心がけましょう</p>
+        <p>少し無理されているようです。適時休みをとり、ストレスを溜めないように心がけましょう</p>
       <% elsif @check.chk_score > 20 && @check.chk_score <= 40 then %>
         <p>今のところ大丈夫そうですが、心のバランスをとるよう心がけましょう</p>
       <% else %>
         <p>調子よさそうですね。このペースを維持しましょう！</p>
       <% end %>
-  </div>  
- 　
+   </div>  
+   
   <div class="content_more">
         <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %>
           
         <% if user_signed_in? && current_user.id == @check.user_id %>
-          
             <%= link_to 'やり直す', "/checks/#{@check.id}/edit", method: :get,class: 'btn btn-default' %>
             <%= link_to '削除', "/checks/#{@check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
         <% end %>     
-   </div>
+  </div>
 </div>

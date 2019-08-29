@@ -4,8 +4,9 @@
     <% if user_signed_in? && current_user.id %>
     <%= current_user.nickname %>さん</h1><br>
     <% end %>
-  <h2>今感じているストレスレベルと診断テスト後のストレスレベルを比較して、ストレス感度を確認し、
-  心のケアに役立てましょう！ </h2>
+  <h2>ストレスへの対応は、いかに今の心の状態（ストレス感度）を正しく知るかで変わってきます。<br>
+    ストレスの予測値とテスト後の結果を比べてみて、ご自分のストレス感度が鈍っていないか測定し、<br>
+    心のケアに役立てましょう！ </h2>
    <div class="check_start">
     <% if user_signed_in? && current_user.id %>
       <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>  
@@ -59,7 +60,7 @@
        <td>
          <div class="stress_sensivility">
            <% if check.dif_score > 60 then %>
-            <p>ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
+            <p id="red">ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
             <% elsif check.dif_score > 30 && check.dif_score <= 60 then %>
             <p>ご自身で感じているよりも、ストレスがかかっているようです。症状が重くなる前に積極的に休みを取りましょう！</p>
             <% elsif check.dif_score > 10 && check.dif_score <= 30 then %>
