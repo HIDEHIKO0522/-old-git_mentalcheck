@@ -12,7 +12,7 @@
          <%= f.label :pre_score, "回答:" %>
          <%= f.select :pre_score, [["とても悪い", 100], ["悪い", 80], ["普通", 60], ["良い", 40], ["とても良い", 20]] ,:prompt => "選択してください", include_hidden: false %>
        </div> 
-      <h2>ではメンタルチェック開始しましょう！
+      <h2>ではメンタルチェック開始しましょう！<br>
       <%= current_user.nickname %>さん、下記5つの質問に答えてください。</h2> 
        <div class="questions_form1">
           <p>Q1: <%= @question1 %></p>
