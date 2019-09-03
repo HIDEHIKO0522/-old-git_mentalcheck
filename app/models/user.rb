@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :checks       
+  has_many :checks, dependent: :destroy  #ユーザーがデータベースから削除されてしまった場合にユーザーがした投稿も全て消える     
 end

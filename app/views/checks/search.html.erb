@@ -24,7 +24,7 @@
        <th>ストレスチェック<br>結果</th>
        <th>ストレス<br>予測値</th>
        <th>ストレス感度</th>
-       <th>編集.削除</th>
+       <th>応援ボタン</th>
      </tr>
    </thead>
    <tbody>
@@ -71,9 +71,10 @@
           <% end %>
         </div>
         <td>
+            <%= render partial: 'likes/like', locals: { check: check, likes: @likes } %>
             <% if user_signed_in? && current_user.id == check.user_id %>
             <!--%= link_to '編集', "/checks/#{check.id}/edit", method: :get,class: 'btn btn-default' %>-->
-            <%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
+            <!--%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>-->
             <% end %>
         </td>
     </tr>   

@@ -62,3 +62,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'kaminari'
+gem 'kaminari-i18n'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'jquery-rails' 
+gem 'jquery-ui-rails'

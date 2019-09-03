@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_071225) do
+ActiveRecord::Schema.define(version: 2019_09_01_133935) do
 
   create_table "checks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
+    t.text "nickname"
     t.integer "pre_score"
     t.integer "chk_score"
     t.integer "chk_score1"
@@ -24,7 +25,14 @@ ActiveRecord::Schema.define(version: 2019_08_26_071225) do
     t.integer "dif_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "nickname"
+    t.integer "likes_count"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "check_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

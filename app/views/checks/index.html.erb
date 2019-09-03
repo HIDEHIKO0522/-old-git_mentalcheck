@@ -5,8 +5,10 @@
     <%= current_user.nickname %>さん</h1><br>
     <% end %>
   <h2>ストレスへの対応は、いかに今の心の状態（ストレス感度）を正しく知るかで変わってきます。<br>
-    ストレスの予測値とテスト後の結果を比べてみて、ご自分のストレス感度が鈍っていないか測定し、<br>
+    ストレスの予測値とテスト後の結果を比べてみて、ご自分のストレス感度が鈍っていないか測定し、
     心のケアに役立てましょう！ </h2>
+  <h2 id="navy">チェック後はユーザー同士でお互いのメンタル状況をフォローしていきましょう。<br>
+  <span class="under">ログイン後応援ボタンを押してね！</span></h2>  
    <div class="check_start">
     <% if user_signed_in? && current_user.id %>
       <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>  
@@ -26,7 +28,7 @@
         <col style="width:15%;">
         <col style="width:15%;">
         <col style="width:40%;">
-        <col style="width:10%;">
+        <col style="width:20%;">
     </colgroup>
   
    <thead>
@@ -36,7 +38,7 @@
        <th>ストレスチェック<br>結果</th>
        <th>ストレス<br>予測値</th>
        <th>ストレス感度</th>
-       <th>編集・削除</th>
+       <th>応援ボタン</th>
      </tr>
    </thead>
    <tbody>
@@ -81,9 +83,10 @@
         </div>
         </td>
         <td>
-            <% if user_signed_in? && current_user.id == check.user_id %>
+            <% if user_signed_in? %>
             <!--%= link_to '編集', "/checks/#{check.id}/edit", method: :get,class: 'btn btn-default' %>-->
-            <%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
+            <%= render partial: 'likes/like', locals: { check: check, likes: @likes } %>
+            <!--%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>-->
         <% end %>
         </td>
     </tr>    

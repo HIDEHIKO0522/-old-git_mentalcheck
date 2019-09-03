@@ -1,5 +1,5 @@
 <div class="contents_row">
-  <p><%= @nickname %>さんのストレスチェック一覧</p>
+  <h1><%= @nickname %>さんのストレスチェック一覧</h1>
 
   <table class="list">  
   
@@ -8,7 +8,8 @@
         <col style="width:5%;">
         <col style="width:15%;">
         <col style="width:15%;">
-        <col style="width:40%;">
+        <col style="width:30%;">
+        <col style="width:10%;">
         <col style="width:10%;">
     </colgroup>
     
@@ -19,7 +20,8 @@
        <th>ストレスチェック<br>結果</th>
        <th>ストレス<br>予測値</th>
        <th>ストレス感度</th>
-       <th>編集・削除</th>
+       <th>応援ボタン</th>
+       <th>投稿削除</th>
      </tr>
    </thead>
    <tbody>
@@ -66,10 +68,12 @@
           <% end %>
          </div>
         <td>
-            <!--%= link_to '編集', "/checks/#{check.id}/edit", method: :get,class: 'btn btn-default' %>-->
+            <%= render partial: 'likes/like', locals: { check: check, likes: @likes } %>
+        </td>
+        <td>
             <%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
         </td>
-    </tr>   
+    </tr>  
        <% end %>   
   </tbody>
   </table>
