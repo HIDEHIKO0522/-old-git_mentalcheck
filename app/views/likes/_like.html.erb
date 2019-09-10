@@ -1,0 +1,16 @@
+<% if check.like_user(current_user.id) %>
+  <%= button_to check_like_path(check.likes, check_id: check.id), method: :delete, id: "like-button", remote: true do %> 
+    <%= image_tag("icon_red_heart.png") %>
+    <span>
+      <%= check.likes_count %>件
+    </span>
+  <% end %>
+<% else %>
+  <%= button_to check_likes_path(check),id: "like-button", remote: true do %>  
+    <%= image_tag("icon_heart.png") %>
+    <span>
+      <%= check.likes_count %>件
+    </span>
+  <% end %>
+<% end %>
+
