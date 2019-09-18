@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "csv"
+
+questions_csv = CSV.readlines("db/questions.csv")
+questions_csv.each do |row|
+  Question.create(text: row[1], categoly: row[2],)
+end
