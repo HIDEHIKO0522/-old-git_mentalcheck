@@ -1,6 +1,6 @@
 class ChecksController < ApplicationController
 
-  before_action :move_to_index, except: :index
+  # before_action :move_to_index, except: :index
   
 
   def index
