@@ -9,5 +9,5 @@ require "csv"
 
 questions_csv = CSV.readlines("db/questions.csv")
 questions_csv.each do |row|
-  Question.create(text: row[1], categoly: row[2],)
+  Question.create(text: row[1], category: row[2],)
 end
