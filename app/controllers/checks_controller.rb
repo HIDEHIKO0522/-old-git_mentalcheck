@@ -85,8 +85,7 @@ class ChecksController < ApplicationController
   end    
  
   def search
-    @checks = Check.search(params[:search])
-    @check = Check.page(params[:page]).per(5).order("created_at DESC")
+    @checks_search = Check.search(params[:search]).page(params[:page]).per(5).order("created_at DESC")
   end  
 
   

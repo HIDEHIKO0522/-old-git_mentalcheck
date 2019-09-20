@@ -28,7 +28,7 @@
      </tr>
    </thead>
    <tbody>
-     <% @checks.each do |check| %>
+     <% @checks_search.each do |check| %>
     <tr>
        <td><%= check.created_at.strftime("%Y/%m/%d %H:%M") %></td>
        <td>
@@ -82,7 +82,7 @@
   </tbody>
   </table>
   
-  <%= paginate(@check) %>
+  <%= paginate(@checks_search) %>
 
 </div>       
     
