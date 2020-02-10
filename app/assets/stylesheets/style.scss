@@ -274,8 +274,7 @@ div.contents_left {
      padding: 10px;
      bottom:  10px;
      height: 110vh;
-    width:  calc(100vw - 400px);
-    // overflow: scroll;
+     width:  calc(100vw - 400px);
      float: left;
 
   .success {
@@ -300,7 +299,7 @@ div.contents_left {
   }
 
   
-  //index　表のフォーム設定  
+  //index 表のフォーム設定  
     table.list, table.attr {
       font-size: 80%;
       width: 100%;
@@ -351,7 +350,7 @@ div.contents_left {
      margin-top: 300px;
 
   }
-    //show　表のフォーム設定  
+    //show 表のフォーム設定  
     table.list_show, table.attr {
       font-size: 20px;
       width: 90%;
@@ -439,7 +438,7 @@ div.contents_left {
       width: 110px;
       margin: auto;
       }
-//チェック結果コメント欄      　
+//チェック結果コメント欄      
       .contents_answer {
       position: relative;
       width: 895px;

@@ -2,20 +2,20 @@
           <% if check.dif_score > 60 then %>
             <p id="red">超危険</p>
             <% elsif check.dif_score > 30 && check.dif_score <= 60 then %>
-            <p>危険度4</p>
+            <p>かなり危険</p>
             <% elsif check.dif_score > 10 && check.dif_score <= 30 then %>
-            <p>危険度3</p>
+            <p>鈍い</p>
             <% elsif check.dif_score > 5 && check.dif_score <= 10 then %>
-            <p>危険度2</p>
+            <p>少しズレあり</p>
             <% elsif check.dif_score > -5 && check.dif_score <= 5 then %>
             <p>正常範囲</p>
              <% elsif check.dif_score > 5 && check.dif_score <= -5 then %>
             <p>正常範囲</p>
             <% elsif check.dif_score > -30 && check.dif_score <= 5 then %>
-            <p>改善度2</p>
+            <p>少しズレあり</p>
              <%elsif check.dif_score > -60 && check.dif_score <= -30 then %>
-            <p>改善度3</p>
+            <p>やや意識過剰</p>
            <% else %>
-            <p>改善度4</p>
+            <p>意識過剰</p>
           <% end %>
           
