@@ -1,11 +1,19 @@
+
+@mixin boxBase($margin: 30px auto, $padding: 10px) {
+  margin: $margin;
+  padding: $padding;
+}
+
+
 //application:
 body,html {
   height: 100%;
-  background-color: #f3ffd8;//$lightGray;
-}
+  // background-color: #fff;
+  }
 //application:
 body {
-  padding-top: 40px;
+  background: #fafafa;
+  // url("https://yy5zymc9.user.webaccel.jp/wp-content/uploads/2019/06/pixta_45162567_M.jpg");
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -16,7 +24,7 @@ h1,h2,h3,h4,h5,h6,body {
   line-height: 1.57;
   letter-spacing: 0.15em;
   font-size: 16px;
-  color: #000;
+  color: #ec5e5f;
   margin: 0;
 }
 
@@ -33,10 +41,11 @@ text-decoration: underline;
 }
 
 .btn {
+    background: #fff8e8;
     Padding: 5px 15px ;
     font-size: 12px;
     border: 2px solid #57C3E9;
-    color: #000080;
+    color: #253141;
     font-weight: bold;
     text-align: center;
     border-radius: 3px;
@@ -56,7 +65,7 @@ text-decoration: underline;
 h1{
    line-height: 1.77;
    font-size: 30px;
-   color: #1a1a1a;
+   color: #000;
    font-family: fantasy;//書体の指定:装飾的なフォント
    margin: 0;
    padding: 0;
@@ -68,6 +77,10 @@ h1{
 
 #navy {
   color: #000080 ;
+}
+
+#skyblue {
+  color: #57C3E9;
 }
 
 h3,{
@@ -90,128 +103,103 @@ h6, {
 }
 
 header.header {
+  height: 40px;
+  width: 100vw;
   border-bottom: 1px solid #292929;
-  background-color: #ffeeff;
+  background-color: #99FFFF;
   position: fixed;
-  top: 0;
-  left:  0;
-  right: 0;
-  z-index: 0;// headerとcontentsが重なった時は、headerが前に表示されるようにする
+  z-index: 1;// headerとcontentsが重なった時は、headerが前に表示されるようにする
   
-  div.header__bar.row {
-    position: relative;
-    top: 10px;
-    left: 500px;
-    
-    h1.grid-6 {       //タイトル「ストレス感度チェック」の表示
-      font-size: 30px;
+  .header__bar.row {
+    color: #fff;
+    padding-left:100px;
+    padding-right:100px;
+    display: flex;
+    justify-content: space-between;
+
+    .header_title {       //タイトル「ストレス感度チェック」の表示
+      height: 30px;
+      width: 300px;
+      font: 30px;
       line-height: 45px;
       color: #800080;
-      float: left;
       margin-right: 20px;
+      float: left;
       a {
         display: block;
       }
     }
-      div.grid-6 {    //ログインボタン、新規登録ボタンの配置
+      
+    .header_indecator {    //ログインボタン、新規登録ボタンの配置
+      height: 30px;
+      width: 500px;
       float: right;
       text-align: right;  //文字揃え
     }
   }
 }
-
-.form {
-  background: url(https://dl.dropboxusercontent.com/u/5840617/DeathtoStock_Wired3.jpg);
-  background-size: cover;
-  .contents {
-    position: absolute;
-    left:   0;
-    top:    30px;
-    bottom: 100px;
-    right:  0;
-    margin: auto;
-  }
-  footer {
-    position: absolute;
-    bottom: 5px;
-    left:  0;
-    right: 0;
-  }
-}
-
-div.contents_row {
-     padding: 30px;
-     left:    0px;
-     top:     0px;
+//ログイン、新規登録のレイアウト 
+div.contents_mid {
+     margin: 30px 10px 10px;  
+     padding: 20px;
      bottom:  10px;
-     right:   0px;
-     height: 900px;
-     width:  1000px;
-     margin: auto;  
-
-  .success {
-    top:      0px;
-    bottom:   0px;
-    right:    0px;
-    left:     0px;
-    height: 800px;
-    width:  1000px;
-    text-align: center;
-  }
-  .contents_form { //checks/new.htmlのレイアウト 
-    top:      0px;
-    bottom:   0px;
-    right:    0px;
-    left:     0px;
-    height: 900px;
-    width:  500px;
-    margin:  auto;
-  }
-
-  .contents_form2 { //checks/edit.htmlのレイアウト 
-    top:      0px;
-    bottom:   0px;
-    right:    0px;
-    left:     0px;
-    height: 1400px;
-    width:  500px;
-    margin:  auto;
-  }
-  .contents_form2 { //ログイン、新規登録のレイアウト 
-    top:      0px;
-    bottom:   0px;
-    right:    0px;
-    left:     0px;
-    height: 800px;
-    width:  500px;
-    text-align: center;
-    margin:  auto;
-  }
-
-  .check_start {
-    text-align: center; 
-  }
-  
-   .questions_form0 {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    color: #232323;
-    background: #fff8e8;
-    border-left: solid 10px #ffc06e;
+     height: calc(100vh - 30px);
+     width:  100%;
+     
+    .contents_form2 {
+        height: 800px;
+        width:  500px;
+        text-align: center;
+        margin:  auto;
     }
-    .questions_form0 p {
-        margin: 0; 
-        padding: 0;
+    .field {
+      width: 400px;
+      text-align: left;
     }
+
+    
+}
+//checks/new,editのレイアウト
+div.contents_mid {
+    margin: 10px 10px 10px;  
+    padding: 30px;
+    bottom:  10px;
+    height: calc(100vh - 30px);
+    width:  calc(100vw-80px);
+    overflow: scroll;
+
+    .success {
+    margin-top: 100px;  
+    text-align: center;
+    } 
+    
+    .contents_form1 {
+      height: 900px;
+      width:  600px;
+      padding-top: 40px;
+      margin:  auto;
+    }
+
+    .questions_form0 {
+      padding: 0.5em 1em;
+      margin: 2em 0;
+      color: #232323;
+      background: #fff8e8;
+      border-left: solid 10px #ffc06e;
+      }
+      .questions_form0 p {
+          margin: 0; 
+          padding: 0;
+      }
   
    .questions_form1 {  //メンタルチェックQ1用のフォーム
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    color: #6091d3;/*文字色*/
-    background: #FFF;
-    border: solid 3px #6091d3;/*線*/
-    border-radius: 10px;/*角の丸み*/
+      padding: 0.5em 1em;
+      margin: 1em 0;
+      font-weight: bold;
+      color: #6091d3;/*文字色*/
+      background: #FFF;
+      border: solid 3px #6091d3;/*線*/
+      border-radius: 10px;/*角の丸み*/
     }
     .questions_form1 p {
         margin: 0; 
@@ -219,13 +207,13 @@ div.contents_row {
     }
     
     .questions_form2 {  //メンタルチェックQ2用のフォーム
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    color: #ff7d6e;/*文字色*/
-    background: #FFF;
-    border: solid 3px #ff7d6e;/*線*/
-    border-radius: 10px;/*角の丸み*/
+      padding: 0.5em 1em;
+      margin: 1em 0;
+      font-weight: bold;
+      color: #ff7d6e;/*文字色*/
+      background: #FFF;
+      border: solid 3px #ff7d6e;/*線*/
+      border-radius: 10px;/*角の丸み*/
     }
     .questions_form2 p {
         margin: 0; 
@@ -233,13 +221,13 @@ div.contents_row {
     }
     
     .questions_form3 {  //メンタルチェックQ3用のフォーム
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    color: #00BCD4;/*文字色*/
-    background: #FFF;
-    border: solid 3px #00BCD4;/*線*/
-    border-radius: 10px;/*角の丸み*/
+      padding: 0.5em 1em;
+      margin: 1em 0;
+      font-weight: bold;
+      color: #00BCD4;/*文字色*/
+      background: #FFF;
+      border: solid 3px #00BCD4;/*線*/
+      border-radius: 10px;/*角の丸み*/
     }
     .questions_form3 p {
         margin: 0; 
@@ -247,13 +235,13 @@ div.contents_row {
     }
     
     .questions_form4 {  //メンタルチェックQ4用のフォーム
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    color: #5d627b;/*文字色*/
-    background: #FFF;
-    border: solid 3px #5d627b;/*線*/
-    border-radius: 10px;/*角の丸み*/
+      padding: 0.5em 1em;
+      margin: 1em 0;
+      font-weight: bold;
+      color: #5d627b;/*文字色*/
+      background: #FFF;
+      border: solid 3px #5d627b;/*線*/
+      border-radius: 10px;/*角の丸み*/
     }
     .questions_form4 p {
         margin: 0; 
@@ -261,13 +249,13 @@ div.contents_row {
     }
     
     .questions_form5 {  //メンタルチェックQ5用のフォーム
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    color: #ffc06e;/*文字色*/
-    background: #FFF;
-    border: solid 3px #ffc06e;/*線*/
-    border-radius: 10px;/*角の丸み*/
+      padding: 0.5em 1em;
+      margin: 1em 0;
+      font-weight: bold;
+      color: #ffc06e;/*文字色*/
+      background: #FFF;
+      border: solid 3px #ffc06e;/*線*/
+      border-radius: 10px;/*角の丸み*/
     }
     .questions_form5 p {
         margin: 0; 
@@ -276,7 +264,41 @@ div.contents_row {
     .submit {
       text-align: center;  //文字揃え
     }
+    
+    
+}
+
+//checks/index,showのレイアウト
+div.contents_left {
+     margin: 30px 10px 10px;  
+     padding: 10px;
+     bottom:  10px;
+     height: 110vh;
+    width:  calc(100vw - 400px);
+    // overflow: scroll;
+     float: left;
+
+  .success {
+    height: 800px;
+    width:  1000px;
+    text-align: center;
+  }
+  .contents_form {
+    height: 900px;
+    width:  600px;
+    margin:  auto;
+  }
+
+
+  .check_start {
+    text-align: center; 
+  }
   
+  .form-control {
+    height: 30px;
+    width: 150px;
+  }
+
   
   //index　表のフォーム設定  
     table.list, table.attr {
@@ -285,7 +307,7 @@ div.contents_row {
     }
     
     table.list th, table.attr th {
-      background-color: #499;
+      background-color: #38aef0;
       color: white;
       font-size: 80%;
       font-weight: normal;
@@ -294,43 +316,49 @@ div.contents_row {
     
     table.list td, table.list th,
     table.attr td, table.attr th {
+      border: thin #000 solid; 
       padding: 4px;
     }
   
     table.list th {
+      font: 16px;
       text-align: center;
     }
     
     table.attr th {
-      text-align: left;
+      text-align: center;
     }
     
     table.list td, table.attr td {
-      background-color: #cee;
+      background-color: #CCFFFF;
       text-align: center;
     }  
     
     .stress_sensivility { //ストレス感度回答の文字揃え：左揃え
-     text-align: left ;
+     text-align: center;
      }
+  .contents_image_show { //showアクションの表示    // height: 200px;
+     margin-top: 150px;
 
+  }
   .div.contents_image { //showアクションの表示
-     left:    0px;
-     top:     0px;
+     left:    300px;
+     top:     500px;
      bottom:  10px;
      right:   0px;
      height: 1000px;
-     width:  450px;
-     margin: auto;
+     width:  400px;
+     margin-top: 300px;
+
   }
     //show　表のフォーム設定  
     table.list_show, table.attr {
       font-size: 20px;
-      width: 100%;
+      width: 90%;
     }
     
     table.list_show th, table.attr th {
-      background-color: #499;
+      background-color: #38aef0;
       color: white;
       font-size: 80%;
       font-weight: normal;
@@ -353,6 +381,13 @@ div.contents_row {
       background-color: #cee;
       text-align: center;
     }  
+    .comment_last {
+      color: #999999;
+      text-align: left;
+     .mgr-10{
+        margin-right : 10px;
+      }
+    }
 
   .div.content_more {
        top:      20px;
@@ -380,7 +415,6 @@ div.contents_row {
       .star-ratings-sprite-rating {
        background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
        background-position: 0 100%;
-      // float: left;
        height: 21px;
        display: block;
        }
@@ -408,6 +442,7 @@ div.contents_row {
 //チェック結果コメント欄      　
       .contents_answer {
       position: relative;
+      width: 895px;
       margin: 2em 0;
       padding: 0.5em 1em;
       border: solid 3px #FFC107;
@@ -429,48 +464,144 @@ div.contents_row {
       .contents_answer p {
       margin: 0; 
       padding: 0;  
-      }   
-  
-}  
-//入力フォームの設定
+      }  
+}      
+
 form {
   input,textarea {
-    width: 120px;
+    height: 40px;
+    width: 500px;
+    font-size: 15px;
+    line-height: 40px;
     padding: 200px 200px 200px,200px ;
     border: 1px solid #D8D8D8;
     border-radius: 5px;
     margin: auto;
+    
     font-family: "游ゴシック", "YuGothic";
   }
+
   input[type="submit"] {
     background-color: #57C3E9;
+    height: 30px;
+    width: 100px;
     border-radius: 15px;
     color: #fff;
     border: 0;
-    font-size: 20px;
+    font-size: 15px;
+    line-height: 20px;
     &:hover {
       background-color: lighten(#57C3E9, 10%);
     }
   }  
 }
-//入力不備時のアラート
 
+div.contents_right {
+    height: 100vh;
+    width: 350px;
+    margin-top: 40px;
+    overflow: scroll;
+    float: right;
+    .right_image {
+      height: 100vh;
+      width: 350px;
+    }
+}
+div.contents_right2 {
+    // background-image: url(" http://domonet.jp/plus/images/post/201805/thum-20180529093519.jpg");
+   
+    height: 100vh;
+    width: 360px;
+    padding-top: 40px;
+    float: right;
+  .content_comment {
+    @include boxBase(20px 100px 30px 0);
+    box-shadow: 0 0 10px rgba(#000,0.2);
+     width: 360px;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    margin-left: 0px;
 
+    .comment_text {
+      float: left;
+       
+    }
+    .input_comment {
+      height: 50px;
+      width: 300px;
+      float: left;
+    }
+  
+    .form_submit {
+      margin-top: 20px; 
+      margin-bottom: 10px;
+      float: right;
+    }
+  
+    .comments {
+      height: 400px;
+      width: 400px;
+      margin-top: 70px;
+      padding-top: 70px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-top: 40px;            
+      .comment_content {
+        height: 20px;
+        width: 400px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+          .comments_user { 
+            color: #57C3E9;
+            width: 50px;
+            float: left;
+          }
+          .comments_text {
+            color: #ec5e5f;
+            width: 290px;
+            float: left;
+            .mgr-10{
+              margin-left : 10px;
+            }
+          }
+      }  
+      .comments_date {
+        color:#999999;
+        font-size: 5px;
+        margin-top: 7px;
+        .mgr-10{
+          margin-left : 20px;
+        }
+      }  
+    }    
+  }
+}  
+div.contents_right3 {
+    background-image: url(" http://domonet.jp/plus/images/post/201805/thum-20180529093519.jpg"); 
+    height: 110vh;
+    width: 360px;
+    padding-top: 40px;
+    float: right;
+    
+}
 //application "Copyright メンタルチェック 2019."の設定"
-footer {
-     Padding: 5px 0 0px 10px;
-     left:    0px;
-     top:     0px;
-     bottom:  10px;
-     right:   0px;
-     height: 0px;
-     width:  1000px;
-     margin: auto; 
+footer.footer {
+     background: #000;
+    height: 50px;
+    width:  100vw;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
      
-
   p {
-     font-size: 10px;
+     font-size: 12px;
      text-align: center;
      color:#D8D8D8;
+     line-height: 30px;
+     padding-bottom: 10px;
   }
 }

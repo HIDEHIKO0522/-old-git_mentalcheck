@@ -10,6 +10,7 @@ class Check < ApplicationRecord
   
   
   has_many :questions
+  has_many :comments
   belongs_to :user
   has_many :likes, dependent: :destroy
     
@@ -38,6 +39,14 @@ class Check < ApplicationRecord
     self.dif_score = (chk_score1 + chk_score2 + chk_score3 + chk_score4 + chk_score5 - pre_score)
   end
   
-  
+  def show_last_comment
+    last_comment = comments.last
+  if last_comment.present?
+      last_comment.text 
+  else
+    'まだコメントはありません。'
+  end
+end
+
 
 end

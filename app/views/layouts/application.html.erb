@@ -4,35 +4,56 @@
     <title>Mentalcheck</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <%= csrf_meta_tags %>
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Unica+One::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
     <%= csp_meta_tag %>
-
   </head>
 
   <body>
     <header class="header">
       <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">メンタルチェック</a></h1>
+        <h1 class="header_title"><a href="/">メンタルチェック</a></h1>
         <% if user_signed_in? %>
+          <div class="header_indecator">
               <span>
                 <%= link_to "マイページ", "/users/#{current_user.id}", method: :get, class: 'btn btn-default' %>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-default' %>
               </span>
         <% else %> 
-              <%= link_to "ログイン", new_user_session_path, method: :get, class: 'btn btn-default' %>
-              <%= link_to "新規登録", new_user_registration_path, method: :get, class: 'btn btn-default' %>
+               <span>
+                <%= link_to "ログイン", new_user_session_path, method: :get, class: 'btn btn-default' %>
+                <%= link_to "新規登録", new_user_registration_path, method: :get, class: 'btn btn-default' %>
+               </span>
          <% end %>
+        </div> 
       </div>
   </header>  
-   <!--main>-->
-    <!--% if flash.notice %>-->
-      <!--p class="notice">-->
-      <!--%= flash.notice %></p>-->
-      <!--% end %>-->
+   <main>
+    <% if flash.notice %>
+      <p class="notice">
+       <%= flash.notice %>
+     </p>
+    <% end %>
       
     <%= yield %>
-    <!--/main>-->
-  <footer>
+  </main>
+  <footer class="footer">
       <p>
         Copyright メンタルチェック 2019.
       </p>

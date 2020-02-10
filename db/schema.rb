@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_01_133935) do
+ActiveRecord::Schema.define(version: 2020_02_10_081921) do
 
   create_table "checks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
-    t.text "nickname"
     t.integer "pre_score"
     t.integer "chk_score"
     t.integer "chk_score1"
@@ -25,7 +24,16 @@ ActiveRecord::Schema.define(version: 2019_09_01_133935) do
     t.integer "dif_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "nickname"
     t.integer "likes_count"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "check_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -43,7 +51,6 @@ ActiveRecord::Schema.define(version: 2019_09_01_133935) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -51,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_09_01_133935) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

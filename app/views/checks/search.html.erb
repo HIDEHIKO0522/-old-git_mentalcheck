@@ -1,7 +1,6 @@
-<div class="contents_row">
+<div class="contents_left">
    <div class="check_start">
     <% if user_signed_in? && current_user.id %>
-      <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %> 
       <%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br>
     <% end %> 
    </div>  
@@ -13,76 +12,65 @@
         <col style="width:5%;">
         <col style="width:15%;">
         <col style="width:15%;">
-        <col style="width:40%;">
-        <col style="width:10%;">
+        <col style="width:12%;">
+        <col style="width:38%;">
     </colgroup>
-  
+   
    <thead>
      <tr>
        <th>更新日</th>
        <th>ニック<br>ネーム</th>
-       <th>ストレスチェック<br>結果</th>
-       <th>ストレス<br>予測値</th>
-       <th>ストレス感度</th>
-       <th>応援ボタン</th>
+       <th>ストレス<br>チェック前</th>
+       <th>ストレス<br>チェック後</th>
+       <th>ストレス<br>感度</th>
+       <th>ストレス<br>レベル</th>
      </tr>
    </thead>
    <tbody>
      <% @checks_search.each do |check| %>
     <tr>
-       <td><%= check.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-       <td>
-         <a href="/users/<%= check.user_id %>">
-          <span><%= check.user.nickname %></span>
-            <!--a href="/users/%= checks.user_id %>">-->
-              <!--span>%= @nickname %></span>-->
-           </a>
-       </td>
-       <td>
-           <div class="star-ratings-sprite">
-             <span style="width:<%= check.chk_score %>%" class="star-ratings-sprite-rating"></span></div>
-          </div>
-       </td>
-       <td>
+      <td rowspan="2"><%= check.created_at.strftime("%Y/%m/%d %H:%M") %>
+      </td>
+      <td rowspan="2"><a href="/users/<%= check.user_id %>">
+           <span><%= check.user.nickname %></span>
+        </a>
+      </td>
+      <td>
            <div class="star-rating">
              <span style="width:<%= check.pre_score %>% " class="star-rating-item"></span>
-           </div>
-       </td>
-       <td>
-           <div class="stress_sensivility">
-           <% if check.dif_score > 60 then %>
-            <p id="red">ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
-            <% elsif check.dif_score > 30 && check.dif_score <= 60 then %>
-            <p>ご自身で感じているよりも、ストレスがかかっているようです。症状が重くなる前に積極的に休みを取りましょう！</p>
-            <% elsif check.dif_score > 10 && check.dif_score <= 30 then %>
-            <p>ストレスの感じ方が鈍ってきているようです。日常生活のストレス環境を見直し、適度な休息を取り入れ、感度を戻していきましょう！</p>
-            <% elsif check.dif_score > 5 && check.dif_score <= 10 then %>
-            <p>ストレスの感じ方がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
-            <% elsif check.dif_score > -5 && check.dif_score <= 5 then %>
-            <p>ストレス値と今感じている気分は同じレベルです。気分に応じた休息を心がけてください。特にストレス値が高い場合、休息第一で行動してください！</p>
-             <% elsif check.dif_score > -20 && check.dif_score <= -5 then %>
-            <p>ストレスに対し、やや敏感になっているようです。ストレスに対しあまり反応しすぎず、心のバランスを維持していきましょう。</p>
-            <% elsif check.dif_score > -30 && check.dif_score <= -20 then %>
-            <p>ストレスに対し、敏感になっているようです。ご自身が思っているほど状態は悪くありません。日常生活にリラックスする機会を作りましょう。</p>
-            <% elsif check.dif_score > -60 && check.dif_score <= -30 then %>
-            <p>ストレスの感じ方が過剰気味です。ご自身の思いよりもストレスはかかっていまんせんので、リラックスを心がけて下さい。</p>
-          <% else %>
-            <p>ストレスの感じ方が明らかに過剰です。思い違いの要因もないですか？今一度要因を見直してみてください。</p>
-          <% end %>
+          </div>
+      </td>
+      <td>
+           <div class="star-ratings-sprite">
+             <span style="width:<%= check.chk_score %>%" class="star-ratings-sprite-rating"></span>
+          </div>
+      </td>
+      <td>
+        <%= render partial: "check", locals: { check: check } %>
+      </td>
+      <td>
+        <%= render partial: "check-stress", locals: { check: check } %>
+      </td>
+    </tr>  
+     <tr>
+      <td colspan="4">
+        <div class="comment_last">
+          <% if user_signed_in? %>
+            <%= link_to 'コメントする', check_path(check.id), method: :get, class: 'btn btn-default' %>
+            最新コメント:<%= check.show_last_comment %>
+          <% end %>  
         </div>
-        <td>
-            <%= render partial: 'likes/like', locals: { check: check, likes: @likes } %>
-            <% if user_signed_in? && current_user.id == check.user_id %>
-            <!--%= link_to '編集', "/checks/#{check.id}/edit", method: :get,class: 'btn btn-default' %>-->
-            <!--%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>-->
-            <% end %>
-        </td>
+      </td>
     </tr>   
        <% end %>   
   </tbody>
   </table>
-  
+
   <%= paginate(@checks_search) %>
 
-</div>       
+</div> 
+<div class="contents_right">
+  
+</div>  
+
     

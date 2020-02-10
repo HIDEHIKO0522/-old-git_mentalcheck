@@ -1,0 +1,11 @@
+<% if check.chk_score > 80 then %>
+    <p id="red">ストレス過剰です。すぐに休息をとりましょう！</p>
+    <% elsif check.chk_score > 60 && check.chk_score <= 80 then %>
+      <p>ストレスでお疲れ気味ですね。<br>休みをとって心身ともにリフレッシュしましょう</p>
+    <% elsif check.chk_score > 40 && check.chk_score <= 60 then %>
+      <p>ストレスが少々かかっているようですね。<br>気持ちをゆったりと持って過ごしましょう</p>
+    <% elsif check.chk_score > 20 && check.chk_score <= 40 then %>
+      <p>1日のうちリラックスする時間を作りましょう！</p>
+    <% else %>
+      <p>ストレス意識しすぎず、気持ちをゆったりと<br>持って過ごしましょう</p>
+<% end %>      

@@ -1,86 +1,56 @@
-<div class="contents_row">
+<div class="contents_left">
+  <div class="contents_image_show">
+  </div>              
   <div class="contents_image">
      <table class="list_show">  
      
        <colgroup>
           <col style="width:15%;">
           <col style="width:5%;">
-          <col style="width:15%;">
+          <col style="width:10%;">
           <col style="width:30%;">
        </colgroup>
     
-       <caption><h1 id="red">💫メンタルチェック結果✨</h1></caption>
+       <caption><h1 id="red">💫あなたのストレス感度は✨</h1></caption>
     
        <thead>
          <tr>
            <th></th>
            <th>％</th>
            <th>ストレス値</th>
-           <th>ストレス感度（予測値とチェック結果との差）</th>
+           <th>ストレス感度（チェック前と後との差）</th>
          </tr>
        </thead>
        <tbody>
           <tr>
-           <th>ストレスチェック結果</th>
+           <th>ストレスチェック後</th>
            <td><%= @check.chk_score %></td>
            <td>
-             <!--p><
-             %= @check.chk_score %></p> -->
              <div class="star-ratings-sprite">
                <span style="width:<%= @check.chk_score %>%" class="star-ratings-sprite-rating"></span>
              </div>
            </td>
            <td rowspan="2">
              <div class="stress_sensivility">
-            <% if @check.dif_score > 60 then %>
-                  <p id="red">ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
-                <% elsif @check.dif_score > 30 && @check.dif_score <= 60 then %>
-                  <p>ご自身で感じているよりも、ストレスがかかっているようです。症状が重くなる前に積極的に休みを取りましょう！</p>
-                <% elsif @check.dif_score > 10 && @check.dif_score <= 30 then %>
-                  <p>ストレスの感じ方が鈍ってきているようです。日常生活のストレス環境を見直し、適度な休息を取り入れ、感度を戻していきましょう！</p>
-                <% elsif @check.dif_score > 5 && @check.dif_score <= 10 then %>
-                  <p>ストレスの感じ方がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
-                  <% elsif @check.dif_score > -5 && @check.dif_score <= 5 then %>
-                  <p>今ご自身で感じているストレス感度は適正です。ストレスチェック値が高い場合、休息第一で行動してください！</p>
-                   <% elsif @check.dif_score > -20 && @check.dif_score <= -5 then %>
-                  <p>ストレスに対し、やや敏感になっているようです。ストレスに対しあまり反応しすぎず、心のバランスを維持していきましょう。</p>
-                  <% elsif @check.dif_score > -30 && @check.dif_score <= -20 then %>
-                  <p>ストレスに対し、敏感になっているようです。ご自身が思っているほど状態は悪くありません。日常生活にリラックスする機会を作りましょう。</p>
-                  <% elsif @check.dif_score > -60 && @check.dif_score <= -30 then %>
-                  <p>ストレスの感じ方が過剰気味です。ご自身の思いよりもストレスはかかっていまんせんので、リラックスを心がけて下さい。</p>
-                <% else %>
-                  <p>ストレスの感じ方が明らかに過剰です。思い違いの要因もないですか？今一度要因を見直してみてください。</p>
-                <% end %>
+                <%= render partial: "check", locals: { check: @check } %>
               </div>
             </td>
           </tr>
           <tr>
-            <th>ストレス予測値</th> 
+            <th>ストレスチェック前</th> 
             <td><%= @check.pre_score %></td>
             <td>
-                 <!--p><
-                 %= @check.pre_score %></p>      -->
-                 <div class="star-rating">
-                 <span style="width:<%= @check.pre_score %>% " class="star-rating-item"></span>
-                 </div>
+              <div class="star-rating">
+                <span style="width:<%= @check.pre_score %>% " class="star-rating-item"></span>
+              </div>
             </td>
           </tr>
        </tbody>
       </table>
   </div>  
    <div class="contents_answer">
-    <span class="box-title">チェック結果コメント</span>
-      <% if @check.chk_score > 80 then %>
-        <p id="red">ストレスがかかり過ぎです！すぐに休みをとってください</p>
-      <% elsif @check.chk_score > 60 && @check.chk_score <= 80 then %>
-        <p>かなり無理されているようです。積極的に休みをとりましょう！</p>
-      <% elsif @check.chk_score > 40 && @check.chk_score <= 60 then %>
-        <p>少し無理されているようです。適時休みをとり、ストレスを溜めないように心がけましょう</p>
-      <% elsif @check.chk_score > 20 && @check.chk_score <= 40 then %>
-        <p>今のところ大丈夫そうですが、心のバランスをとるよう心がけましょう</p>
-      <% else %>
-        <p>調子よさそうですね。このペースを維持しましょう！</p>
-      <% end %>
+    <span class="box-title">今のストレスレベル</span>
+      <%= render partial: "check-stress", locals: { check: @check } %>
    </div>  
    
   <div class="content_more">
@@ -90,5 +60,40 @@
             <%= link_to 'やり直す', "/checks/#{@check.id}/edit", method: :get,class: 'btn btn-default' %>
             <%= link_to '削除', "/checks/#{@check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
         <% end %>     
-  </div>
-</div>
+  </div> 
+</div> 
+<div class="contents_right2">
+  <div class="content_comment"> 
+      <% if current_user %>
+         <%= form_tag("/checks/#{@check.id}/comments",  method: :post,  id: "comment_text" ) do %>
+          <textarea cols="30" name="text" placeholder="コメントする" rows="2" class="input_comment"></textarea>
+          <input type="submit" value="SEND" class="form_submit">
+        <!--%= form_with(model: [@check, @comment], local: true, id: "comment_text") do |form| %>-->
+        <!--      %= form.text_area :text, placeholder: "コメントする", rows: "2", class: "input_comment" %>-->
+        <!--      %= form.submit "SEND",  class: "form_submit" %>-->
+        <!--% else %>-->
+        <!--  <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>-->
+        <% end %>
+      <% end %>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <div class="comment_content">
+            <div class="comments_user">  
+                <h2 id="skyblue"><%= comment.user.nickname %>:</h2>
+            </div>   
+            <div class="comments_text">
+                <span class="mgr-10"><%= comment.text %></span>
+            </div>  
+         </div>         
+        <div class="comments_date">
+            <span class="mgr-10"><small><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>更新</small></span>
+        </div>
+   
+        <% end %>
+       <%= paginate(@comments) %>
+      <% end %>
+    </div> 
+  </div>  
+</div>  

@@ -1,8 +1,11 @@
-<div class="contents_row">
+<div class="contents_mid">
   <div class="success">
     <h3>
       削除が完了しました。
     </h3>
    <%= link_to 'メンタルチェック一覧に戻る', "/checks", method: :get,class: 'btn btn-default' %>
+   <% if user_signed_in? %>
+    <%= link_to "マイページ", "/users/#{current_user.id}", method: :get, class: 'btn btn-default' %>
+   <% end %>
   </div>
 </div>

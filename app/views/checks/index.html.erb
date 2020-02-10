@@ -1,24 +1,23 @@
-<div class="contents_row">
+<div class="contents_left">
     
   <h1>こんにちは！
     <% if user_signed_in? && current_user.id %>
     <%= current_user.nickname %>さん</h1><br>
     <% end %>
-  <h2>ストレスへの対応は、いかに今の心の状態（ストレス感度）を正しく知るかで変わってきます。<br>
-    ストレスの予測値とテスト後の結果を比べてみて、ご自分のストレス感度が鈍っていないか測定し、
-    心のケアに役立てましょう！ </h2>
-  <h2 id="navy">チェック後はユーザー同士でお互いのメンタル状況をフォローしていきましょう。<br>
-  <span class="under">ログイン後応援ボタンを押してね！</span></h2>  
+  <h2>メンタルケアには今のストレスレベルを知るだけでなく、ストレスの感じ方（ストレス感度）にズレがないかを知ることが<br>大切です。
+  ご自身が今感じているストレス感覚をチェックして、ストレスを素直に感じれるようにしましょう！ </h2>
+  <h2 id="navy">ユーザー間で励ましのコメントもしてくださいね！（ログイン後表示されます）<br>
+  <span class="under"></span></h2>  
    <div class="check_start">
     <% if user_signed_in? && current_user.id %>
       <%= link_to 'ストレスチェックを始める', "/checks/new", method: :get,class: 'btn btn-default' %>  
     <% end %> 
    </div>
-   <% if user_signed_in? && current_user.id %>
-   <%= form_tag :search_checks, method: :get, class: "search" do %>
-   <%= text_field_tag :search, '', class: 'form-control', placeholder: 'ニックネームを入力' %> 
-  <%= submit_tag "検索" %>
-  <% end %>  
+  <% if user_signed_in? && current_user.id %>
+     <%= form_tag :search_checks, method: :get, class: "search" do %>
+   　  <%= text_field_tag :search, '', class: 'form-control', placeholder: 'ニックネームを入力' %> 
+         <%= submit_tag "検索" %>
+    <% end %>  
   <% end %> 
   <table class="list">  
   
@@ -27,72 +26,68 @@
         <col style="width:5%;">
         <col style="width:15%;">
         <col style="width:15%;">
-        <col style="width:40%;">
-        <col style="width:20%;">
+        <col style="width:12%;">
+        <col style="width:38%;">
     </colgroup>
-  
+   
    <thead>
      <tr>
        <th>更新日</th>
        <th>ニック<br>ネーム</th>
-       <th>ストレスチェック<br>結果</th>
-       <th>ストレス<br>予測値</th>
-       <th>ストレス感度</th>
-       <th>応援ボタン</th>
+       <th>ストレス<br>チェック前</th>
+       <th>ストレス<br>チェック後</th>
+       <th>ストレス<br>感度</th>
+       <th>ストレス<br>レベル</th>
      </tr>
    </thead>
    <tbody>
       <% @checks.each do |check| %> 
-    <tr>
-       <td><%= check.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-       <td><a href="/users/<%= check.user_id %>">
+     <tr>
+      <td rowspan="2"><%= check.created_at.strftime("%Y/%m/%d %H:%M") %>
+      </td>
+      <td rowspan="2"><a href="/users/<%= check.user_id %>">
           <span><%= check.user.nickname %></span>
         </a>
-       </td>
-       <td>
-           <div class="star-ratings-sprite">
-             <span style="width:<%= check.chk_score %>%" class="star-ratings-sprite-rating"></span>
-          </div>
-       </td>
-       <td>
+      </td>
+      <td>
            <div class="star-rating">
              <span style="width:<%= check.pre_score %>% " class="star-rating-item"></span>
           </div>
-       </td>
-       <td>
-         <div class="stress_sensivility">
-           <% if check.dif_score > 60 then %>
-            <p id="red">ご自身で感じているよりもかなりストレスがかかっている状態で、危険です。すぐに休養しましょう！</p>
-            <% elsif check.dif_score > 30 && check.dif_score <= 60 then %>
-            <p>ご自身で感じているよりも、ストレスがかかっているようです。症状が重くなる前に積極的に休みを取りましょう！</p>
-            <% elsif check.dif_score > 10 && check.dif_score <= 30 then %>
-            <p>ストレスの感じ方が鈍ってきているようです。日常生活のストレス環境を見直し、適度な休息を取り入れ、感度を戻していきましょう！</p>
-            <% elsif check.dif_score > 5 && check.dif_score <= 10 then %>
-            <p>ストレスの感じ方がやや鈍ってきているようです。今の気分にもう少し素直になり、無理をしない生活を心がけましょう！</p>
-            <% elsif check.dif_score > -5 && check.dif_score <= 5 then %>
-            <p>ストレス値と今感じている気分は同じレベルです。気分に応じた休息を心がけてください。特にストレス値が高い場合、休息第一で行動してください！</p>
-             <% elsif check.dif_score > -20 && check.dif_score <= -5 then %>
-            <p>ストレスに対し、やや敏感になっているようです。ストレスに対しあまり反応しすぎず、心のバランスを維持していきましょう。</p>
-            <% elsif check.dif_score > -30 && check.dif_score <= -20 then %>
-            <p>ストレスに対し、敏感になっているようです。ご自身が思っているほど状態は悪くありません。日常生活にリラックスする機会を作りましょう。</p>
-            <% elsif check.dif_score > -60 && check.dif_score <= -30 then %>
-            <p>ストレスの感じ方が過剰気味です。ご自身の思いよりもストレスはかかっていまんせんので、リラックスを心がけて下さい。</p>
-          <% else %>
-            <p>ストレスの感じ方が明らかに過剰です。思い違いの要因もないですか？今一度要因を見直してみてください。</p>
-          <% end %>
+      </td>
+      <td>
+           <div class="star-ratings-sprite">
+             <span style="width:<%= check.chk_score %>%" class="star-ratings-sprite-rating"></span>
+          </div>
+      </td>
+      <td>
+        <%= render partial: "check", locals: { check: check } %>
+      </td>
+      <td>
+        <%= render partial: "check-stress", locals: { check: check } %>
+      </td>
+     </tr>    
+     <tr>
+      <td colspan="4">
+        <div class="comment_last">
+         <% if user_signed_in? %>
+           <%= link_to 'コメントする', check_path(check.id), method: :get, class: 'btn btn-default' %>
+            <span class="mgr-10">コメント<%= check.comments.count %>件</span>
+            最新コメント:<%= check.show_last_comment %>
+         <% end %>  
         </div>
-        </td>
-        <td>
-            <% if user_signed_in? %>
-            <!--%= link_to '編集', "/checks/#{check.id}/edit", method: :get,class: 'btn btn-default' %>-->
-            <%= render partial: 'likes/like', locals: { check: check, likes: @likes } %>
-            <!--%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>-->
-        <% end %>
-        </td>
-    </tr>    
-      <% end %> 
+      </td>
+    </tr>   
+       <% end %>   
   </tbody>
- </table> 
-
+  </table>
+ 
   <%= paginate(@checks) %>
-</div>    
+</div>  
+
+<div class="contents_right">
+   <!--%= render partial: "check-slide", locals: { @checks: checks } %>-->
+    <div class="b"><img class="right_image" src="assets/test1.jpg"></div>
+    <div class="b"><img class="right_image" src="assets/test2.jpg"></div>
+    <div class="b"><img class="right_image" src="assets/test3.jpg"></div>
+    <div class="b"><img class="right_image" src="assets/test4.jpg"></div>
+</div>  

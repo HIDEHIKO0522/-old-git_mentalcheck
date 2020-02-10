@@ -1,13 +1,13 @@
- <div class="contents_row">
-   <div class="contents_form">
+<div class="contents_mid">
+   <div class="contents_form1">
 
   <% if @check.errors.any? %>
-     <h1 id="red">項目全てに回答して下さい。</h1>
+     <h2 id="red">⭐️⭐️項目全てに回答して下さい⭐️⭐️</h2>
   <% end %>
-
-  <%= form_for(@check) do |f| %>
-       <div class="questions_form0">
-      <h2>メンタル予測しましょう！</h2>
+  
+  <%= form_for @check do |f| %>
+      <div class="questions_form0">
+        <h2>今の気分を答えてください！</h2>
         <p><%= current_user.nickname %>さん、今の気分を<span class="under">下記より選んでください。</span></p> 
          <%= f.label :pre_score, "回答:" %>
          <%= f.select :pre_score, [["とても悪い", 100], ["悪い", 80], ["普通", 60], ["良い", 40], ["とても良い", 20]] ,:prompt => "選択してください", include_hidden: false %>
@@ -40,12 +40,11 @@
          <%= f.label :chk_score5, "回答:" %>
          <%= f.select :chk_score5, [["よくある", 20], ["時々ある", 16], ["少しある", 12], ["あまりない", 8], ["ほとんどない", 4]] ,:prompt => "選択してください", include_hidden: false %>
        </div>
-       <div class="submit">
+     <div class="submit">
          <%= f.submit  value="診断結果へ" %>
-       </div>
-     <% end %>
- </div>
+     </div>
+   <% end %>
+ </div>   
 </div>   
- 
  
  
