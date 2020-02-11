@@ -6,7 +6,7 @@ lock '3.11.2'
 set :application, 'git_mentalcheck'
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url,  'git@github.com/HIDEHIKO0522/git_mentalcheck.git'
+set :repo_url,  'git@github.com:HIDEHIKO0522/git_mentalcheck.git'
 
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
