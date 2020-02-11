@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: mentalcheck_production
-  username: mentalcheck
-  password: <%= ENV['MENTALCHECK_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
