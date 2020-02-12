@@ -45,12 +45,7 @@
       </div>
   </header>  
    <main>
-    <% if flash.notice %>
-      <p class="notice">
-       <%= flash.notice %>
-     </p>
-    <% end %>
-      
+    <%= render "layouts/notifications" %>      
     <%= yield %>
   </main>
   <footer class="footer">

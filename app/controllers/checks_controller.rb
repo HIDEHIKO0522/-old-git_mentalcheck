@@ -35,7 +35,7 @@ class ChecksController < ApplicationController
 
      if @check.save 
        render 'show' #成功の場合
-    else   #失敗の場合
+     else   #失敗の場合
     
     
     @question1 = Question.where( category:1).order("RAND()").limit(1).map{|v| v.text}
@@ -44,7 +44,7 @@ class ChecksController < ApplicationController
     @question4 = Question.where( category:4).order("RAND()").limit(1).map{|v| v.text}
     @question5 = Question.where( category:5).order("RAND()").limit(1).map{|v| v.text}
     @check = Check.new
-    flash.now[:notice] = '入力に誤りがあります。最初からやり直してください'
+      flash.now[:notice] = '入力に誤りがあります。最初からやり直してください。'
       render 'new' 
      end
   end
@@ -75,8 +75,10 @@ class ChecksController < ApplicationController
       end  
       
      if @check.save
-       render 'update' #成功の場合
-      else        
+       flash.now[:success] = '編集に成功しました。' 
+       render 'show' #成功の場合
+      else 
+        flash.now[:notice] = '編集に失敗しました。最初からやり直してください。'      
         render 'edit' #失敗の場合
      end
   end
