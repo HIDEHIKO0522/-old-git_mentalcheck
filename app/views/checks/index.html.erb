@@ -85,9 +85,8 @@
 </div>  
 
 <div class="contents_right">
-   <!--%= render partial: "check-slide", locals: { @checks: checks } %>-->
-    <div class="b"><img class="right_image" src="assets/test1.jpg"></div>
-    <div class="b"><img class="right_image" src="assets/test2.jpg"></div>
-    <div class="b"><img class="right_image" src="assets/test3.jpg"></div>
-    <div class="b"><img class="right_image" src="assets/test4.jpg"></div>
+    <div class="b"><img class="right_image" src="<%= asset_path "test1.jpg" %>"></div>
+    <div class="b"><img class="right_image" src="<%= asset_path "test2.jpg" %>"></div>
+    <div class="b"><img class="right_image" src="<%= asset_path "test3.jpg" %>"></div>
+    <div class="b"><img class="right_image" src="<%= asset_path "test4.jpg" %>"></div>
 </div>  

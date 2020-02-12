@@ -28,7 +28,7 @@
   <body>
     <header class="header">
       <div class="header__bar row">
-        <h1 class="header_title"><a href="/">メンタルチェック</a></h1>
+        <h1 class="header_title"><%= link_to 'メンタルチェック', "/checks", method: :get %></h1>
         <% if user_signed_in? %>
           <div class="header_indecator">
               <span>

@@ -53,9 +53,6 @@
       <td>
         <% if user_signed_in? && current_user.id == check.user_id %>
           <%= link_to '編集', "/checks/#{check.id}/edit", method: :get, class: 'btn btn-default' %>
-            <!--<div id="likes_buttons_%= check.id %>">-->
-            <!--  %= render partial: 'likes/like', locals: { check: check, likes: @likes } %>-->
-            <!--</div>-->
           <%= link_to '削除', "/checks/#{check.id}", method: :delete, data: { confirm: "本当に削除しますか？" },class: 'btn btn-default' %>
         <% end %>
       </td>
@@ -74,10 +71,13 @@
       <% end %> 
   </tbody>
  </table> 
-    <!--%= link_to 'メンタルチェック一覧へ戻る', "/checks", method: :get,class: 'btn btn-default' %><br>-->
   <%= paginate(@checks) %> 
 </div>       
-<div class="contents_right3">
+<div class="contents_right">
+    <div class="b"><img class="right_image" src="<%= asset_path "test1.jpg" %>"></div>
+    <div class="b"><img class="right_image" src="<%= asset_path "test2.jpg" %>"></div>
+    <div class="b"><img class="right_image" src="<%= asset_path "test3.jpg" %>"></div>
+    <div class="b"><img class="right_image" src="<%= asset_path "test4.jpg" %>"></div>
 </div>  
    
    
