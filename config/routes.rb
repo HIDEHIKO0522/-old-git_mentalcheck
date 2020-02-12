@@ -9,5 +9,4 @@ Rails.application.routes.draw do
       get "search",  on: :collection
       resources :comments, only: [:create]
     end
-    resources :questions, only: [:new, :create]
 end
