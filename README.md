@@ -1,6 +1,6 @@
 # メンタルチェック
 
-
+<img src="https://github.com/HIDEHIKO0522/git_mentalcheck/blob/master/mental_index.png" width="280px"> <img src="https://github.com/HIDEHIKO0522/git_mentalcheck/blob/master/mental_new.png" width="280px"> <img src="https://github.com/HIDEHIKO0522/git_mentalcheck/blob/master/mental_show.png" width="280px">
 
 ## *作成意図* 
 ストレスの感じ方にズレが出ていないかのチェックを行い、日常のメンタルケアに役立てる。  
